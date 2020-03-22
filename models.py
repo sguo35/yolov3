@@ -1,4 +1,6 @@
 import torch.nn.functional as F
+import time
+import torch
 
 from utils.google_utils import *
 from utils.parse_config import *
@@ -260,45 +262,96 @@ class Darknet(nn.Module):
         self.version = np.array([0, 2, 5], dtype=np.int32)  # (int32) version info: major, minor, revision
         self.seen = np.array([0], dtype=np.int64)  # (int64) number of images seen during training
         self.info()  # print model description
+        self.last_size = None
 
-    def forward(self, x, verbose=False):
+    def _conv_pool(self, x, i, mdef, module, k, intermediate_cache, cache_key, verbose=False):
+        # if k = 1, then we only compute these layers on the first pass
+        # if k > 1, we compute these layers only on the kth pass
+        # if there is no k, then we compute these layers on every pass (SPP layers)
+        # if cache key is present, then we create a cache entry in intermediate_cache AND
+        #   we only compute in the first pass
+        if (not 'k' in mdef) or mdef['k'] == k or 'cache' in mdef:
+            if k == 1 and ('cache' in mdef or ('k' in mdef and mdef['k'] == k)):
+                x = module(x)
+                if 'cache' in mdef:
+                    intermediate_cache[cache_key] = x
+            else:
+                if 'cache' in mdef:
+                    x = intermediate_cache[cache_key]
+                elif (not 'k' in mdef) or mdef['k'] == k:
+                    x = module(x)
+        return x
+
+    def _shortcut(self, x, out, i, mdef, module, k, intermediate_cache, cache_key, verbose=False):
+        # if k = 1 and k=k key, just compute this layer
+        # if k > 1 and k=k key exists on this layer then we must store shortcut layers in the cache
+        # if no k key, compute this layer
+        if k == 1 and 'k' in mdef and mdef['k'] == k:
+            x = module(x, out)
+        if k > 1 and 'k' in mdef and mdef['k'] == k:
+            x = module(x, out)
+            intermediate_cache[cache_key] = x
+        if not 'k' in mdef:
+            x = module(x, out)
+        return x
+
+    def forward(self, x, K_MAX=4, verbose=False):
         img_size = x.shape[-2:]
         yolo_out, out = [], []
         if verbose:
             str = ''
             print('0', x.shape)
 
-        for i, (mdef, module) in enumerate(zip(self.module_defs, self.module_list)):
-            mtype = mdef['type']
-            if mtype in ['convolutional', 'upsample', 'maxpool']:
-                x = module(x)
-            elif mtype == 'shortcut':  # sum
+        cuda_sync = False
+
+        if x.shape != self.last_size:
+            cuda_sync = True
+            self.last_size = x.shape
+
+        intermediate_cache = {}
+        max_filters = 32
+        for k in range(1, K_MAX + 1):
+            if cuda_sync:
+                torch.cuda.synchronize()
+                start = time.time()
+            for i, (mdef, module) in enumerate(zip(self.module_defs, self.module_list)):
+                #print("k", k, "mdef", mdef)
+                mtype = mdef['type']
+                if mtype in ['convolutional', 'upsample', 'maxpool']:
+                    if mtype == 'convolutional':
+                        max_filters = max(max_filters, mdef['filters'])
+                    x = self._conv_pool(x, i, mdef, module, k, intermediate_cache, max_filters, verbose)
+
+                elif mtype == 'shortcut':  # sum
+                    x = self._shortcut(x, out, i, mdef, module, k, intermediate_cache, max_filters, verbose)
+                elif mtype == 'route':  # concat
+                    layers = mdef['layers']
+                    if verbose:
+                        l = [i - 1] + layers  # layers
+                        s = [list(x.shape)] + [list(out[i].shape) for i in layers]  # shapes
+                        str = ' >> ' + ' + '.join(['layer %g %s' % x for x in zip(l, s)])
+                    if len(layers) == 1:
+                        x = out[layers[0]]
+                    else:
+                        try:
+                            x = torch.cat([out[i] for i in layers], 1)
+                        except:  # apply stride 2 for darknet reorg layer
+                            out[layers[1]] = F.interpolate(out[layers[1]], scale_factor=[0.5, 0.5])
+                            x = torch.cat([out[i] for i in layers], 1)
+                        # print(''), [print(out[i].shape) for i in layers], print(x.shape)
+                elif mtype == 'yolo':
+                    yolo_out.append(module(x, img_size, out))
+                out.append(x if self.routs[i] else [])
                 if verbose:
-                    l = [i - 1] + module.layers  # layers
-                    s = [list(x.shape)] + [list(out[i].shape) for i in module.layers]  # shapes
-                    str = ' >> ' + ' + '.join(['layer %g %s' % x for x in zip(l, s)])
-                x = module(x, out)  # weightedFeatureFusion()
-            elif mtype == 'route':  # concat
-                layers = mdef['layers']
-                if verbose:
-                    l = [i - 1] + layers  # layers
-                    s = [list(x.shape)] + [list(out[i].shape) for i in layers]  # shapes
-                    str = ' >> ' + ' + '.join(['layer %g %s' % x for x in zip(l, s)])
-                if len(layers) == 1:
-                    x = out[layers[0]]
-                else:
-                    try:
-                        x = torch.cat([out[i] for i in layers], 1)
-                    except:  # apply stride 2 for darknet reorg layer
-                        out[layers[1]] = F.interpolate(out[layers[1]], scale_factor=[0.5, 0.5])
-                        x = torch.cat([out[i] for i in layers], 1)
-                    # print(''), [print(out[i].shape) for i in layers], print(x.shape)
-            elif mtype == 'yolo':
-                yolo_out.append(module(x, img_size, out))
-            out.append(x if self.routs[i] else [])
-            if verbose:
-                print('%g/%g %s -' % (i, len(self.module_list), mtype), list(x.shape), str)
-                str = ''
+                    print('%g/%g %s -' % (i, len(self.module_list), mtype), list(x.shape), str)
+                    str = ''
+            # reset X to first cached layer here
+            min_cache_key = min(intermediate_cache.keys())
+            x = intermediate_cache[min_cache_key]
+            max_filters = 32
+            if cuda_sync:
+                torch.cuda.synchronize()
+                print("Time taken for block K (ms)", k, ":", (time.time() - start) * 1000, "batch shape", self.last_size)
 
         if self.training:  # train
             return yolo_out

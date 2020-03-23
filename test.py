@@ -29,7 +29,7 @@ def test(cfg,
             os.remove(f)
 
         # Initialize model
-        model = Darknet(cfg, img_size)
+        model = Darknet(cfg, opt, img_size)
 
         # Load weights
         attempt_download(weights)

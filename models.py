@@ -251,7 +251,7 @@ class YOLOLayer(nn.Module):
 class Darknet(nn.Module):
     # YOLOv3 object detection model
 
-    def __init__(self, cfg, img_size=(416, 416)):
+    def __init__(self, cfg, opt, img_size=(416, 416)):
         super(Darknet, self).__init__()
 
         self.module_defs = parse_model_cfg(cfg)
@@ -263,6 +263,7 @@ class Darknet(nn.Module):
         self.seen = np.array([0], dtype=np.int64)  # (int64) number of images seen during training
         self.info()  # print model description
         self.last_size = None
+        self.opt = opt
 
     def _conv_pool(self, x, i, mdef, module, k, intermediate_cache, cache_key, verbose=False):
         # if k = 1, then we only compute these layers on the first pass
@@ -311,7 +312,7 @@ class Darknet(nn.Module):
         intermediate_cache = {}
         max_filters = 32
         for k in range(1, K_MAX + 1):
-            if cuda_sync:
+            if cuda_sync and self.opt.measure_runtime:
                 torch.cuda.synchronize()
                 start = time.time()
             for i, (mdef, module) in enumerate(zip(self.module_defs, self.module_list)):
@@ -349,7 +350,7 @@ class Darknet(nn.Module):
             min_cache_key = min(intermediate_cache.keys())
             x = intermediate_cache[min_cache_key]
             max_filters = 32
-            if cuda_sync:
+            if cuda_sync and self.opt.measure_runtime:
                 torch.cuda.synchronize()
                 print("Time taken for block K (ms)", k, ":", (time.time() - start) * 1000, "batch shape", self.last_size)
 

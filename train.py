@@ -77,7 +77,7 @@ def train():
         os.remove(f)
 
     # Initialize model
-    model = Darknet(cfg).to(device)
+    model = Darknet(cfg, opt).to(device)
 
     # Optimizer
     pg0, pg1, pg2 = [], [], []  # optimizer parameter groups
@@ -304,9 +304,32 @@ def train():
         # Update scheduler
         scheduler.step()
 
+        final_epoch = epoch + 1 == epochs
+
+        # Save training results
+        save = (not opt.nosave) or (final_epoch and not opt.evolve)
+        if save:
+            with open(results_file, 'r') as f:
+                # Create checkpoint
+                chkpt = {'epoch': epoch,
+                         'best_fitness': best_fitness,
+                         'training_results': f.read(),
+                         'model': model.module.state_dict() if hasattr(model, 'module') else model.state_dict(),
+                         'optimizer': None if final_epoch else optimizer.state_dict()}
+
+            # Save last checkpoint
+            torch.save(chkpt, last)
+
+            # Save backup every 10 epochs (optional)
+            # if epoch > 0 and epoch % 10 == 0:
+            #     torch.save(chkpt, wdir + 'backup%g.pt' % epoch)
+
+            # Delete checkpoint
+            del chkpt
+
         # Process epoch results
         # ema.update_attr(model)
-        final_epoch = epoch + 1 == epochs
+        
         if not opt.notest or final_epoch:  # Calculate mAP
             is_coco = any([x in data for x in ['coco.data', 'coco2014.data', 'coco2017.data']]) and model.nc == 80
             results, maps = test.test(cfg,
@@ -339,8 +362,6 @@ def train():
         if fi > best_fitness:
             best_fitness = fi
 
-        # Save training results
-        save = (not opt.nosave) or (final_epoch and not opt.evolve)
         if save:
             with open(results_file, 'r') as f:
                 # Create checkpoint
@@ -350,16 +371,9 @@ def train():
                          'model': model.module.state_dict() if hasattr(model, 'module') else model.state_dict(),
                          'optimizer': None if final_epoch else optimizer.state_dict()}
 
-            # Save last checkpoint
-            torch.save(chkpt, last)
-
             # Save best checkpoint
             if best_fitness == fi:
                 torch.save(chkpt, best)
-
-            # Save backup every 10 epochs (optional)
-            # if epoch > 0 and epoch % 10 == 0:
-            #     torch.save(chkpt, wdir + 'backup%g.pt' % epoch)
 
             # Delete checkpoint
             del chkpt
@@ -410,6 +424,7 @@ if __name__ == '__main__':
     parser.add_argument('--adam', action='store_true', help='use adam optimizer')
     parser.add_argument('--single-cls', action='store_true', help='train as single-class dataset')
     parser.add_argument('--var', type=float, help='debug variable')
+    parser.add_argument('--measure-runtime', action='store_true', help='measure runtime of 4 stages at different resolutions')
     opt = parser.parse_args()
     opt.weights = last if opt.resume else opt.weights
     print(opt)

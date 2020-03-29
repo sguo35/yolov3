@@ -1,0 +1,1825 @@
+Namespace(batch_size=1, cfg='yolov3-spp.cfg', conf_thres=0.001, data='data/coco2014.data', device='', img_size=416, iou_thres=0.6, measure_runtime=False, save_json=True, single_cls=False, task='benchmark', weights='weights/best.pt')
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.603    0.0385     0.094    0.0644
+              person     5e+03  1.05e+04     0.861     0.124     0.328     0.217
+             bicycle     5e+03       313     0.775    0.0575    0.0984     0.107
+                 car     5e+03  1.64e+03      0.77     0.192     0.309     0.307
+          motorcycle     5e+03       388     0.802    0.0314    0.0623    0.0604
+            airplane     5e+03       131     0.449    0.0992     0.103     0.163
+                 bus     5e+03       259         1    0.0153    0.0596    0.0301
+               train     5e+03       212         0         0     0.035         0
+               truck     5e+03       352     0.482    0.0341     0.109    0.0637
+                boat     5e+03       458     0.581   0.00912    0.0655    0.0179
+       traffic light     5e+03       516     0.734     0.123     0.201      0.21
+        fire hydrant     5e+03        83     0.993      0.12     0.317     0.215
+           stop sign     5e+03        84     0.859     0.145     0.293     0.248
+       parking meter     5e+03        59     0.545    0.0615     0.088     0.111
+               bench     5e+03       471         1   0.00212    0.0233   0.00424
+                bird     5e+03       453     0.094     0.168    0.0805      0.12
+                 cat     5e+03       195         0         0    0.0176         0
+                 dog     5e+03       223     0.606   0.00448    0.0189    0.0089
+               horse     5e+03       305     0.832    0.0163      0.07    0.0319
+               sheep     5e+03       306     0.389    0.0416    0.0867    0.0751
+                 cow     5e+03       376     0.827    0.0382     0.154     0.073
+            elephant     5e+03       283         1    0.0104      0.15    0.0206
+                bear     5e+03        53         0         0  0.000972         0
+               zebra     5e+03       275     0.933    0.0509      0.16    0.0966
+             giraffe     5e+03       170     0.708    0.0147    0.0692    0.0287
+            backpack     5e+03       384     0.688     0.013    0.0359    0.0256
+            umbrella     5e+03       387     0.611    0.0163     0.106    0.0318
+             handbag     5e+03       483     0.357   0.00621    0.0177    0.0122
+                 tie     5e+03       290     0.518     0.138     0.164     0.218
+            suitcase     5e+03       309         1   0.00675    0.0239    0.0134
+             frisbee     5e+03       109     0.853    0.0642      0.23     0.119
+                skis     5e+03       281     0.462    0.0249    0.0586    0.0473
+           snowboard     5e+03        90         1    0.0194    0.0785    0.0381
+         sports ball     5e+03       233     0.929     0.225     0.383     0.362
+                kite     5e+03       381     0.672    0.0646     0.173     0.118
+        baseball bat     5e+03       123         1    0.0194     0.101    0.0382
+      baseball glove     5e+03       139         1    0.0267      0.16     0.052
+          skateboard     5e+03       215     0.912    0.0791     0.171     0.146
+           surfboard     5e+03       266     0.868    0.0248    0.0945    0.0483
+       tennis racket     5e+03       183     0.735    0.0984     0.245     0.174
+              bottle     5e+03       939     0.866    0.0481     0.162    0.0911
+          wine glass     5e+03       363         1    0.0353     0.153    0.0683
+                 cup     5e+03       891     0.868     0.037     0.143    0.0711
+                fork     5e+03       234         0         0    0.0118         0
+               knife     5e+03       290         1   0.00345   0.00927   0.00687
+               spoon     5e+03       253         1   0.00395    0.0218   0.00787
+                bowl     5e+03       617     0.769    0.0378     0.144    0.0721
+              banana     5e+03       359     0.746    0.0246    0.0634    0.0476
+               apple     5e+03       158     0.338     0.019    0.0566     0.036
+            sandwich     5e+03       158         1   0.00633     0.007    0.0126
+              orange     5e+03       185     0.785   0.00541    0.0426    0.0107
+            broccoli     5e+03       330         1   0.00303     0.048   0.00604
+              carrot     5e+03       341         0         0    0.0602         0
+             hot dog     5e+03       160         0         0     0.006         0
+               pizza     5e+03       223         1   0.00448    0.0339   0.00893
+               donut     5e+03       225      0.91   0.00444    0.0525   0.00885
+                cake     5e+03       236         0         0    0.0129         0
+               chair     5e+03  1.59e+03     0.649   0.00465    0.0456   0.00923
+               couch     5e+03       236         0         0    0.0025         0
+        potted plant     5e+03       429      0.72     0.012    0.0734    0.0237
+                 bed     5e+03       195         0         0   0.00491         0
+        dining table     5e+03       633         1   0.00158    0.0184   0.00315
+              toilet     5e+03       179     0.206    0.0335    0.0617    0.0576
+                  tv     5e+03       257         1   0.00964    0.0982    0.0191
+              laptop     5e+03       236         0         0    0.0175         0
+               mouse     5e+03        95     0.644    0.0105     0.143    0.0207
+              remote     5e+03       241     0.856    0.0246     0.102    0.0479
+            keyboard     5e+03       117         1   0.00855     0.076    0.0169
+          cell phone     5e+03       291     0.692    0.0465     0.102    0.0871
+           microwave     5e+03        88         0         0         0         0
+                oven     5e+03       142         0         0         0         0
+             toaster     5e+03        11         0         0         0         0
+                sink     5e+03       211     0.653    0.0537     0.164    0.0992
+        refrigerator     5e+03       107         0         0   0.00163         0
+                book     5e+03  1.03e+03     0.538   0.00194    0.0329   0.00387
+               clock     5e+03       290     0.705     0.355      0.42     0.472
+                vase     5e+03       350      0.76    0.0829     0.127     0.149
+            scissors     5e+03        56         0         0   0.00508         0
+          teddy bear     5e+03       238     0.436    0.0084    0.0213    0.0165
+          hair drier     5e+03        11         0         0         0         0
+          toothbrush     5e+03        77     0.288    0.0112    0.0319    0.0216
+Speed: 6.0/1.2/7.2 ms inference/NMS/total per 320x320 image at batch-size 1 at block K=1
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=5.09s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=1.82s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=21.55s).
+Accumulating evaluation results...
+DONE (t=3.51s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.054
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.099
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.052
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.051
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.084
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.030
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.072
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.117
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.123
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.105
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.187
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.060
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04      0.62     0.238     0.305     0.321
+              person     5e+03  1.05e+04     0.776     0.502     0.598      0.61
+             bicycle     5e+03       313     0.542     0.272     0.296     0.362
+                 car     5e+03  1.64e+03     0.563     0.444      0.45     0.496
+          motorcycle     5e+03       388     0.524     0.384     0.397     0.443
+            airplane     5e+03       131     0.576     0.332     0.411     0.421
+                 bus     5e+03       259     0.812     0.475     0.603     0.599
+               train     5e+03       212     0.963     0.311     0.483     0.471
+               truck     5e+03       352     0.571      0.31      0.37     0.402
+                boat     5e+03       458     0.563     0.131     0.187     0.213
+       traffic light     5e+03       516     0.725     0.246      0.33     0.367
+        fire hydrant     5e+03        83     0.715     0.602     0.691     0.654
+           stop sign     5e+03        84     0.888     0.417     0.588     0.567
+       parking meter     5e+03        59     0.482     0.305     0.301     0.374
+               bench     5e+03       471      0.67    0.0552     0.102     0.102
+                bird     5e+03       453     0.359     0.265     0.228     0.305
+                 cat     5e+03       195     0.743     0.267     0.389     0.392
+                 dog     5e+03       223     0.581     0.299     0.336     0.395
+               horse     5e+03       305     0.703       0.4      0.48      0.51
+               sheep     5e+03       306     0.546     0.382     0.434      0.45
+                 cow     5e+03       376     0.598     0.297     0.362     0.397
+            elephant     5e+03       283       0.8     0.555     0.689     0.655
+                bear     5e+03        53     0.848     0.208      0.28     0.333
+               zebra     5e+03       275     0.785     0.593     0.675     0.676
+             giraffe     5e+03       170     0.956     0.513     0.661     0.668
+            backpack     5e+03       384     0.514    0.0909     0.109     0.154
+            umbrella     5e+03       387     0.722     0.178     0.278     0.286
+             handbag     5e+03       483     0.408    0.0393    0.0755    0.0718
+                 tie     5e+03       290     0.476      0.31     0.304     0.375
+            suitcase     5e+03       309     0.725     0.133     0.219     0.224
+             frisbee     5e+03       109     0.758     0.316     0.432     0.446
+                skis     5e+03       281     0.405     0.203     0.179      0.27
+           snowboard     5e+03        90     0.605     0.171     0.204     0.266
+         sports ball     5e+03       233     0.802     0.335     0.424     0.472
+                kite     5e+03       381      0.61     0.155     0.254     0.247
+        baseball bat     5e+03       123     0.631     0.244     0.328     0.352
+      baseball glove     5e+03       139     0.771     0.209     0.329     0.328
+          skateboard     5e+03       215      0.79     0.351     0.442     0.486
+           surfboard     5e+03       266      0.62      0.19     0.266     0.291
+       tennis racket     5e+03       183      0.73     0.508     0.549     0.599
+              bottle     5e+03       939     0.614     0.215     0.296     0.319
+          wine glass     5e+03       363     0.657     0.298     0.341      0.41
+                 cup     5e+03       891      0.65     0.283      0.34     0.394
+                fork     5e+03       234     0.547     0.124     0.163     0.202
+               knife     5e+03       290     0.564    0.0446    0.0982    0.0827
+               spoon     5e+03       253     0.498    0.0593    0.0783     0.106
+                bowl     5e+03       617      0.59     0.254     0.323     0.355
+              banana     5e+03       359     0.547    0.0977     0.191     0.166
+               apple     5e+03       158     0.445     0.108      0.16     0.173
+            sandwich     5e+03       158     0.464      0.12      0.19     0.191
+              orange     5e+03       185     0.538     0.108     0.167      0.18
+            broccoli     5e+03       330     0.524    0.0667     0.169     0.118
+              carrot     5e+03       341     0.521     0.088     0.195     0.151
+             hot dog     5e+03       160     0.964    0.0625     0.146     0.117
+               pizza     5e+03       223     0.799      0.22     0.337     0.345
+               donut     5e+03       225     0.815     0.267     0.416     0.402
+                cake     5e+03       236     0.392     0.172     0.189      0.24
+               chair     5e+03  1.59e+03     0.553     0.144     0.194     0.229
+               couch     5e+03       236     0.756     0.105     0.219     0.185
+        potted plant     5e+03       429     0.635     0.107     0.208     0.183
+                 bed     5e+03       195     0.501     0.277     0.323     0.357
+        dining table     5e+03       633     0.834     0.151       0.3     0.256
+              toilet     5e+03       179     0.375      0.48     0.388     0.421
+                  tv     5e+03       257     0.721     0.257     0.395     0.379
+              laptop     5e+03       236     0.732     0.313     0.387     0.438
+               mouse     5e+03        95     0.607     0.316     0.365     0.415
+              remote     5e+03       241     0.505     0.178     0.203     0.264
+            keyboard     5e+03       117      0.42     0.291     0.307     0.343
+          cell phone     5e+03       291     0.582     0.227     0.242     0.326
+           microwave     5e+03        88     0.723    0.0304     0.207    0.0584
+                oven     5e+03       142     0.856    0.0835     0.169     0.152
+             toaster     5e+03        11         0         0    0.0736         0
+                sink     5e+03       211     0.521     0.336     0.344     0.409
+        refrigerator     5e+03       107         1    0.0273     0.209    0.0531
+                book     5e+03  1.03e+03     0.348    0.0553    0.0845    0.0954
+               clock     5e+03       290     0.886     0.452     0.575     0.598
+                vase     5e+03       350     0.494     0.289     0.305     0.364
+            scissors     5e+03        56     0.724    0.0179    0.0385    0.0349
+          teddy bear     5e+03       238     0.564     0.214     0.243     0.311
+          hair drier     5e+03        11         0         0   0.00633         0
+          toothbrush     5e+03        77     0.294    0.0779    0.0964     0.123
+Speed: 10.4/1.2/11.6 ms inference/NMS/total per 320x320 image at batch-size 1 at block K=2
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=4.88s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=3.15s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=43.27s).
+Accumulating evaluation results...
+DONE (t=4.79s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.186
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.311
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.191
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.092
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.204
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.258
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.203
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.331
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.358
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.188
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.412
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.441
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.605     0.433     0.467     0.489
+              person     5e+03  1.05e+04     0.734     0.617     0.677     0.671
+             bicycle     5e+03       313     0.543     0.367     0.381     0.438
+                 car     5e+03  1.64e+03     0.536     0.525     0.508      0.53
+          motorcycle     5e+03       388     0.586      0.58     0.559     0.583
+            airplane     5e+03       131      0.59     0.611     0.634       0.6
+                 bus     5e+03       259     0.742     0.707     0.755     0.724
+               train     5e+03       212     0.924     0.632     0.736     0.751
+               truck     5e+03       352     0.637     0.429     0.493     0.513
+                boat     5e+03       458     0.574     0.323     0.342     0.413
+       traffic light     5e+03       516     0.671     0.356     0.398     0.465
+        fire hydrant     5e+03        83     0.827     0.711     0.801     0.764
+           stop sign     5e+03        84     0.881     0.619     0.708     0.727
+       parking meter     5e+03        59     0.467     0.424     0.406     0.444
+               bench     5e+03       471      0.57     0.213     0.238     0.311
+                bird     5e+03       453     0.494     0.384     0.375     0.432
+                 cat     5e+03       195     0.716     0.633      0.67     0.672
+                 dog     5e+03       223      0.51     0.671     0.602     0.579
+               horse     5e+03       305     0.703     0.639      0.69     0.669
+               sheep     5e+03       306     0.481     0.618     0.569     0.541
+                 cow     5e+03       376     0.686     0.503     0.552      0.58
+            elephant     5e+03       283     0.762     0.774     0.848     0.768
+                bear     5e+03        53     0.737     0.529     0.622     0.616
+               zebra     5e+03       275     0.757      0.77     0.801     0.763
+             giraffe     5e+03       170     0.862     0.735     0.793     0.794
+            backpack     5e+03       384     0.376     0.213     0.185     0.272
+            umbrella     5e+03       387      0.61     0.457     0.492     0.523
+             handbag     5e+03       483     0.441    0.0973     0.124     0.159
+                 tie     5e+03       290     0.521     0.472      0.46     0.495
+            suitcase     5e+03       309     0.676     0.398     0.463     0.501
+             frisbee     5e+03       109      0.73     0.477     0.539     0.577
+                skis     5e+03       281     0.365     0.294     0.272     0.326
+           snowboard     5e+03        90     0.676     0.324     0.347     0.438
+         sports ball     5e+03       233     0.789     0.378     0.468     0.511
+                kite     5e+03       381     0.634     0.276     0.373     0.384
+        baseball bat     5e+03       123     0.541     0.393     0.447     0.455
+      baseball glove     5e+03       139     0.648     0.317     0.378     0.425
+          skateboard     5e+03       215     0.791     0.488     0.557     0.604
+           surfboard     5e+03       266     0.569     0.373     0.414     0.451
+       tennis racket     5e+03       183     0.662     0.617     0.649     0.639
+              bottle     5e+03       939     0.534     0.359     0.384     0.429
+          wine glass     5e+03       363     0.542      0.41     0.429     0.467
+                 cup     5e+03       891     0.572     0.415     0.435     0.481
+                fork     5e+03       234     0.597     0.261     0.309     0.363
+               knife     5e+03       290     0.534     0.179     0.191     0.268
+               spoon     5e+03       253     0.458     0.126     0.158     0.198
+                bowl     5e+03       617     0.469     0.481     0.451     0.475
+              banana     5e+03       359     0.532     0.282      0.34     0.368
+               apple     5e+03       158     0.389     0.215     0.223     0.277
+            sandwich     5e+03       158     0.381     0.487     0.414     0.428
+              orange     5e+03       185     0.436     0.341     0.285     0.382
+            broccoli     5e+03       330     0.492     0.252     0.322     0.333
+              carrot     5e+03       341     0.541     0.225     0.299     0.318
+             hot dog     5e+03       160     0.663     0.258     0.365     0.372
+               pizza     5e+03       223     0.703     0.502     0.586     0.586
+               donut     5e+03       225     0.707     0.471     0.603     0.566
+                cake     5e+03       236     0.667     0.365     0.425     0.471
+               chair     5e+03  1.59e+03     0.491     0.354     0.352     0.411
+               couch     5e+03       236     0.572     0.483     0.521     0.524
+        potted plant     5e+03       429     0.572     0.302     0.363     0.395
+                 bed     5e+03       195     0.656     0.579     0.605     0.615
+        dining table     5e+03       633     0.611     0.398     0.444     0.482
+              toilet     5e+03       179     0.566     0.721     0.695     0.634
+                  tv     5e+03       257      0.69     0.576     0.647     0.628
+              laptop     5e+03       236     0.703     0.581     0.659     0.636
+               mouse     5e+03        95     0.577     0.537      0.57     0.556
+              remote     5e+03       241      0.49     0.373     0.355     0.424
+            keyboard     5e+03       117     0.428     0.634      0.59     0.511
+          cell phone     5e+03       291     0.591     0.278     0.308     0.378
+           microwave     5e+03        88     0.811      0.42     0.556     0.554
+                oven     5e+03       142     0.651     0.367     0.471     0.469
+             toaster     5e+03        11     0.687    0.0909     0.215     0.161
+                sink     5e+03       211     0.522     0.517     0.497     0.519
+        refrigerator     5e+03       107     0.665       0.5     0.565     0.571
+                book     5e+03  1.03e+03     0.324      0.18     0.152     0.232
+               clock     5e+03       290     0.875     0.538     0.605     0.666
+                vase     5e+03       350     0.518     0.497     0.483     0.507
+            scissors     5e+03        56     0.778     0.188      0.27     0.303
+          teddy bear     5e+03       238     0.423     0.517     0.472     0.465
+          hair drier     5e+03        11     0.493    0.0909      0.05     0.154
+          toothbrush     5e+03        77     0.459     0.351     0.329     0.398
+Speed: 15.0/1.3/16.2 ms inference/NMS/total per 320x320 image at batch-size 1 at block K=3
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=4.71s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=3.65s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=55.18s).
+Accumulating evaluation results...
+DONE (t=5.91s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.297
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.471
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.313
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.119
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.320
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.458
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.272
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.436
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.474
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.236
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.535
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.659
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.541     0.524     0.513     0.518
+              person     5e+03  1.05e+04     0.722     0.615     0.672     0.664
+             bicycle     5e+03       313     0.483     0.422     0.412      0.45
+                 car     5e+03  1.64e+03     0.504     0.547     0.525     0.524
+          motorcycle     5e+03       388     0.502     0.608     0.563      0.55
+            airplane     5e+03       131     0.543     0.771       0.7     0.637
+                 bus     5e+03       259     0.628     0.772     0.779     0.693
+               train     5e+03       212     0.844     0.731     0.808     0.783
+               truck     5e+03       352     0.539     0.509     0.501     0.524
+                boat     5e+03       458     0.464     0.386     0.375     0.422
+       traffic light     5e+03       516     0.569     0.403     0.401     0.472
+        fire hydrant     5e+03        83     0.872     0.759     0.807     0.812
+           stop sign     5e+03        84     0.684     0.643     0.695     0.663
+       parking meter     5e+03        59     0.686     0.407     0.426     0.511
+               bench     5e+03       471     0.411     0.318     0.283     0.359
+                bird     5e+03       453     0.446     0.457     0.414     0.452
+                 cat     5e+03       195     0.595     0.733     0.693     0.657
+                 dog     5e+03       223     0.459     0.821     0.702     0.589
+               horse     5e+03       305     0.633     0.711     0.744      0.67
+               sheep     5e+03       306     0.353     0.647     0.515     0.456
+                 cow     5e+03       376     0.661     0.566     0.613      0.61
+            elephant     5e+03       283       0.7     0.834     0.849     0.761
+                bear     5e+03        53      0.71     0.642     0.744     0.674
+               zebra     5e+03       275     0.721     0.793     0.836     0.755
+             giraffe     5e+03       170     0.819     0.824     0.854     0.821
+            backpack     5e+03       384     0.274     0.359     0.237     0.311
+            umbrella     5e+03       387     0.493     0.571     0.528     0.529
+             handbag     5e+03       483     0.342     0.161     0.156     0.219
+                 tie     5e+03       290      0.53     0.517     0.503     0.524
+            suitcase     5e+03       309     0.534     0.544     0.538     0.539
+             frisbee     5e+03       109     0.657      0.55     0.598     0.599
+                skis     5e+03       281     0.463     0.367     0.343     0.409
+           snowboard     5e+03        90     0.672       0.4     0.425     0.501
+         sports ball     5e+03       233     0.735     0.433     0.472     0.545
+                kite     5e+03       381     0.644     0.323     0.418      0.43
+        baseball bat     5e+03       123     0.618     0.545     0.552     0.579
+      baseball glove     5e+03       139     0.613     0.381     0.413      0.47
+          skateboard     5e+03       215     0.801     0.563      0.62     0.661
+           surfboard     5e+03       266     0.587     0.492     0.502     0.536
+       tennis racket     5e+03       183     0.585     0.699     0.676     0.637
+              bottle     5e+03       939     0.446     0.438     0.395     0.442
+          wine glass     5e+03       363     0.456     0.444     0.438     0.449
+                 cup     5e+03       891     0.503      0.47      0.45     0.486
+                fork     5e+03       234     0.507     0.338     0.357     0.405
+               knife     5e+03       290     0.425     0.234     0.225     0.302
+               spoon     5e+03       253     0.346     0.213     0.191     0.264
+                bowl     5e+03       617     0.356     0.564     0.445     0.437
+              banana     5e+03       359     0.457     0.387     0.342     0.419
+               apple     5e+03       158     0.329     0.336     0.261     0.332
+            sandwich     5e+03       158       0.3     0.614     0.457     0.403
+              orange     5e+03       185     0.321     0.416     0.307     0.363
+            broccoli     5e+03       330     0.447     0.445     0.388     0.446
+              carrot     5e+03       341     0.428     0.308     0.297     0.358
+             hot dog     5e+03       160     0.553     0.425     0.429     0.481
+               pizza     5e+03       223     0.581     0.652     0.636     0.614
+               donut     5e+03       225     0.611     0.608     0.629      0.61
+                cake     5e+03       236     0.614     0.386     0.463     0.474
+               chair     5e+03  1.59e+03      0.41     0.448       0.4     0.428
+               couch     5e+03       236     0.493     0.644     0.585     0.558
+        potted plant     5e+03       429     0.363     0.506     0.403     0.423
+                 bed     5e+03       195     0.657     0.697     0.691     0.677
+        dining table     5e+03       633     0.476     0.536     0.482     0.504
+              toilet     5e+03       179     0.568     0.804     0.784     0.666
+                  tv     5e+03       257     0.648     0.743     0.738     0.692
+              laptop     5e+03       236     0.562     0.674      0.69     0.613
+               mouse     5e+03        95     0.602     0.611     0.612     0.606
+              remote     5e+03       241     0.414     0.481     0.399     0.445
+            keyboard     5e+03       117     0.463     0.726      0.66     0.565
+          cell phone     5e+03       291      0.56     0.307     0.353     0.396
+           microwave     5e+03        88     0.686     0.614     0.655     0.648
+                oven     5e+03       142     0.542     0.563     0.576     0.552
+             toaster     5e+03        11      0.52    0.0909     0.275     0.155
+                sink     5e+03       211     0.479     0.578     0.519     0.524
+        refrigerator     5e+03       107     0.443     0.713     0.695     0.546
+                book     5e+03  1.03e+03     0.304     0.242     0.171      0.27
+               clock     5e+03       290     0.756     0.579     0.621     0.656
+                vase     5e+03       350     0.487       0.6     0.559     0.538
+            scissors     5e+03        56     0.719     0.357     0.463     0.477
+          teddy bear     5e+03       238     0.395     0.672     0.575     0.497
+          hair drier     5e+03        11     0.521     0.182     0.208      0.27
+          toothbrush     5e+03        77     0.405     0.429     0.364     0.417
+Speed: 19.7/1.3/21.0 ms inference/NMS/total per 320x320 image at batch-size 1 at block K=4
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=4.69s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=4.43s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=64.49s).
+Accumulating evaluation results...
+DONE (t=7.72s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.330
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.517
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.350
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.130
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.381
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.521
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.292
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.471
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.512
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.251
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.578
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.737
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.573    0.0431    0.0875    0.0692
+              person     5e+03  1.05e+04     0.826     0.125     0.301     0.217
+             bicycle     5e+03       313     0.785    0.0671     0.106     0.124
+                 car     5e+03  1.64e+03     0.756     0.204     0.312     0.321
+          motorcycle     5e+03       388     0.794    0.0199    0.0472    0.0389
+            airplane     5e+03       131      0.23     0.089    0.0722     0.128
+                 bus     5e+03       259         1    0.0057    0.0532    0.0113
+               train     5e+03       212         1   0.00843    0.0424    0.0167
+               truck     5e+03       352     0.598    0.0483     0.105    0.0894
+                boat     5e+03       458     0.753      0.02     0.066     0.039
+       traffic light     5e+03       516     0.785     0.165     0.243     0.272
+        fire hydrant     5e+03        83     0.764      0.12     0.249     0.208
+           stop sign     5e+03        84     0.725     0.167     0.221     0.271
+       parking meter     5e+03        59     0.523    0.0678    0.0967      0.12
+               bench     5e+03       471         1   0.00212    0.0176   0.00424
+                bird     5e+03       453    0.0617     0.203    0.0753    0.0946
+                 cat     5e+03       195         1   0.00791    0.0225    0.0157
+                 dog     5e+03       223     0.406   0.00448    0.0132   0.00887
+               horse     5e+03       305     0.644    0.0131    0.0386    0.0257
+               sheep     5e+03       306     0.376     0.049    0.0721    0.0867
+                 cow     5e+03       376     0.663    0.0472     0.134    0.0881
+            elephant     5e+03       283         1    0.0183    0.0924    0.0359
+                bear     5e+03        53         0         0   0.00212         0
+               zebra     5e+03       275      0.81    0.0473     0.124    0.0893
+             giraffe     5e+03       170         0         0    0.0376         0
+            backpack     5e+03       384      0.81    0.0222    0.0536    0.0433
+            umbrella     5e+03       387         1    0.0201       0.1    0.0393
+             handbag     5e+03       483     0.621   0.00828    0.0296    0.0163
+                 tie     5e+03       290     0.558     0.162     0.171     0.251
+            suitcase     5e+03       309     0.909   0.00647    0.0274    0.0129
+             frisbee     5e+03       109     0.844     0.128     0.335     0.223
+                skis     5e+03       281     0.531    0.0498    0.0636    0.0911
+           snowboard     5e+03        90     0.824    0.0333    0.0481    0.0641
+         sports ball     5e+03       233      0.85       0.3      0.42     0.444
+                kite     5e+03       381     0.597    0.0662     0.156     0.119
+        baseball bat     5e+03       123         1    0.0322     0.115    0.0623
+      baseball glove     5e+03       139         1    0.0291     0.144    0.0566
+          skateboard     5e+03       215     0.796     0.093     0.155     0.167
+           surfboard     5e+03       266     0.654    0.0414     0.094    0.0778
+       tennis racket     5e+03       183      0.82    0.0747     0.232     0.137
+              bottle     5e+03       939     0.809    0.0532     0.172    0.0999
+          wine glass     5e+03       363         1    0.0328     0.171    0.0635
+                 cup     5e+03       891     0.919    0.0337     0.151     0.065
+                fork     5e+03       234         1   0.00427   0.00875   0.00851
+               knife     5e+03       290         0         0  0.000143         0
+               spoon     5e+03       253         1   0.00395    0.0184   0.00787
+                bowl     5e+03       617     0.861    0.0401     0.151    0.0766
+              banana     5e+03       359     0.481    0.0195    0.0505    0.0375
+               apple     5e+03       158     0.132    0.0127    0.0197    0.0231
+            sandwich     5e+03       158         0         0         0         0
+              orange     5e+03       185     0.213   0.00894     0.026    0.0172
+            broccoli     5e+03       330         1   0.00442    0.0278    0.0088
+              carrot     5e+03       341     0.321   0.00188    0.0397   0.00374
+             hot dog     5e+03       160         0         0    0.0125         0
+               pizza     5e+03       223     0.955   0.00448   0.00929   0.00893
+               donut     5e+03       225     0.935   0.00889    0.0581    0.0176
+                cake     5e+03       236    0.0163  0.000689   0.00416   0.00132
+               chair     5e+03  1.59e+03      0.59    0.0069    0.0445    0.0136
+               couch     5e+03       236         0         0         0         0
+        potted plant     5e+03       429     0.698    0.0109    0.0662    0.0214
+                 bed     5e+03       195     0.537   0.00626    0.0273    0.0124
+        dining table     5e+03       633         1   0.00158    0.0282   0.00315
+              toilet     5e+03       179     0.114    0.0168    0.0274    0.0292
+                  tv     5e+03       257         1    0.0227    0.0687    0.0444
+              laptop     5e+03       236     0.638   0.00424    0.0269   0.00842
+               mouse     5e+03        95      0.53    0.0105     0.189    0.0206
+              remote     5e+03       241     0.811    0.0357     0.103    0.0683
+            keyboard     5e+03       117         0         0    0.0456         0
+          cell phone     5e+03       291     0.578    0.0424    0.0896    0.0789
+           microwave     5e+03        88         0         0         0         0
+                oven     5e+03       142         0         0  6.25e-05         0
+             toaster     5e+03        11         0         0         0         0
+                sink     5e+03       211     0.579    0.0392      0.11    0.0734
+        refrigerator     5e+03       107         0         0  0.000588         0
+                book     5e+03  1.03e+03     0.193  0.000934    0.0252   0.00186
+               clock     5e+03       290     0.624     0.378     0.413     0.471
+                vase     5e+03       350     0.486    0.0571    0.0836     0.102
+            scissors     5e+03        56         0         0   0.00177         0
+          teddy bear     5e+03       238     0.235    0.0042    0.0118   0.00826
+          hair drier     5e+03        11         0         0         0         0
+          toothbrush     5e+03        77     0.243     0.013    0.0328    0.0247
+Speed: 7.7/1.2/8.9 ms inference/NMS/total per 416x416 image at batch-size 1 at block K=1
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=5.33s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=2.31s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=26.00s).
+Accumulating evaluation results...
+DONE (t=4.58s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.051
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.093
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.049
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.065
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.065
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.019
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.067
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.113
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.121
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.138
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.151
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.044
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.604     0.259     0.323     0.335
+              person     5e+03  1.05e+04      0.75     0.535     0.622     0.625
+             bicycle     5e+03       313     0.619     0.313     0.347     0.416
+                 car     5e+03  1.64e+03     0.577     0.497     0.492     0.534
+          motorcycle     5e+03       388     0.523     0.387     0.404     0.445
+            airplane     5e+03       131      0.55     0.397     0.414     0.461
+                 bus     5e+03       259      0.83     0.471     0.598     0.601
+               train     5e+03       212     0.996     0.325     0.504     0.491
+               truck     5e+03       352     0.584     0.304     0.389       0.4
+                boat     5e+03       458     0.587     0.146     0.217     0.234
+       traffic light     5e+03       516     0.711     0.301     0.375     0.423
+        fire hydrant     5e+03        83     0.722     0.699     0.722      0.71
+           stop sign     5e+03        84     0.768     0.433     0.605     0.554
+       parking meter     5e+03        59     0.303     0.265     0.262     0.283
+               bench     5e+03       471     0.797    0.0499     0.109    0.0939
+                bird     5e+03       453      0.31     0.297     0.244     0.304
+                 cat     5e+03       195     0.806     0.256     0.411     0.389
+                 dog     5e+03       223     0.464     0.341     0.337     0.393
+               horse     5e+03       305     0.746     0.425     0.506     0.541
+               sheep     5e+03       306     0.502     0.415     0.448     0.455
+                 cow     5e+03       376     0.583     0.357     0.408     0.443
+            elephant     5e+03       283      0.79     0.584     0.668     0.671
+                bear     5e+03        53     0.405     0.226      0.24      0.29
+               zebra     5e+03       275     0.831     0.629     0.718     0.716
+             giraffe     5e+03       170     0.964     0.529     0.675     0.684
+            backpack     5e+03       384     0.582     0.115     0.157     0.191
+            umbrella     5e+03       387     0.731     0.202     0.315     0.316
+             handbag     5e+03       483     0.499     0.058    0.0991     0.104
+                 tie     5e+03       290      0.45     0.325     0.304     0.377
+            suitcase     5e+03       309     0.818     0.102     0.221     0.182
+             frisbee     5e+03       109     0.795     0.459      0.56     0.582
+                skis     5e+03       281     0.396     0.246     0.225     0.303
+           snowboard     5e+03        90     0.612     0.156     0.238     0.248
+         sports ball     5e+03       233     0.789     0.455     0.524     0.577
+                kite     5e+03       381     0.572     0.154     0.261     0.243
+        baseball bat     5e+03       123     0.563      0.26     0.303     0.356
+      baseball glove     5e+03       139     0.709     0.216     0.326     0.331
+          skateboard     5e+03       215     0.737     0.405     0.493     0.522
+           surfboard     5e+03       266     0.623     0.222     0.278     0.327
+       tennis racket     5e+03       183     0.668     0.549     0.589     0.602
+              bottle     5e+03       939     0.596     0.268     0.344      0.37
+          wine glass     5e+03       363     0.652      0.35     0.405     0.455
+                 cup     5e+03       891     0.628     0.297     0.371     0.404
+                fork     5e+03       234     0.498    0.0897      0.14     0.152
+               knife     5e+03       290     0.557    0.0414    0.0922     0.077
+               spoon     5e+03       253     0.339    0.0356    0.0771    0.0644
+                bowl     5e+03       617     0.598     0.261     0.351     0.363
+              banana     5e+03       359     0.511      0.12     0.187     0.194
+               apple     5e+03       158     0.356     0.114     0.146     0.173
+            sandwich     5e+03       158     0.452    0.0784     0.135     0.134
+              orange     5e+03       185      0.39     0.146      0.18     0.212
+            broccoli     5e+03       330     0.453    0.0788     0.138     0.134
+              carrot     5e+03       341     0.431    0.0762     0.177      0.13
+             hot dog     5e+03       160     0.596    0.0462     0.131    0.0857
+               pizza     5e+03       223     0.833     0.157     0.296     0.264
+               donut     5e+03       225     0.804     0.329     0.457     0.467
+                cake     5e+03       236     0.313     0.186     0.182     0.234
+               chair     5e+03  1.59e+03     0.553     0.168     0.214     0.257
+               couch     5e+03       236     0.693    0.0956     0.229     0.168
+        potted plant     5e+03       429     0.571      0.11     0.209     0.184
+                 bed     5e+03       195     0.419     0.328     0.331     0.368
+        dining table     5e+03       633     0.843     0.187      0.33     0.306
+              toilet     5e+03       179     0.372     0.469     0.384     0.415
+                  tv     5e+03       257     0.777     0.253     0.384     0.382
+              laptop     5e+03       236     0.705     0.322     0.404     0.442
+               mouse     5e+03        95     0.649     0.379     0.437     0.478
+              remote     5e+03       241     0.529     0.219     0.264      0.31
+            keyboard     5e+03       117     0.503     0.393     0.383     0.441
+          cell phone     5e+03       291     0.529     0.251     0.268      0.34
+           microwave     5e+03        88     0.621    0.0196     0.208     0.038
+                oven     5e+03       142     0.668    0.0634     0.143     0.116
+             toaster     5e+03        11         1    0.0909     0.262     0.167
+                sink     5e+03       211     0.545     0.346     0.344     0.423
+        refrigerator     5e+03       107         1    0.0127     0.179     0.025
+                book     5e+03  1.03e+03     0.291    0.0718    0.0852     0.115
+               clock     5e+03       290     0.862     0.497     0.611      0.63
+                vase     5e+03       350     0.474     0.334     0.314     0.392
+            scissors     5e+03        56     0.382    0.0179    0.0393    0.0341
+          teddy bear     5e+03       238     0.588     0.218      0.25     0.319
+          hair drier     5e+03        11         0         0         0         0
+          toothbrush     5e+03        77     0.484    0.0909     0.114     0.153
+Speed: 14.2/1.4/15.6 ms inference/NMS/total per 416x416 image at batch-size 1 at block K=2
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=5.30s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=2.69s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=48.51s).
+Accumulating evaluation results...
+DONE (t=5.65s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.199
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.329
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.206
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.118
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.219
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.248
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.208
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.349
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.381
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.264
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.416
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.424
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.598      0.48     0.509     0.516
+              person     5e+03  1.05e+04     0.707     0.673     0.718      0.69
+             bicycle     5e+03       313     0.549     0.415     0.436     0.473
+                 car     5e+03  1.64e+03      0.53     0.599     0.572     0.562
+          motorcycle     5e+03       388     0.526     0.593     0.577     0.557
+            airplane     5e+03       131     0.558     0.702     0.684     0.622
+                 bus     5e+03       259     0.776     0.722     0.792     0.748
+               train     5e+03       212     0.945     0.643     0.739     0.765
+               truck     5e+03       352     0.654     0.466     0.541     0.544
+                boat     5e+03       458     0.597     0.373     0.396     0.459
+       traffic light     5e+03       516     0.645      0.43     0.457     0.516
+        fire hydrant     5e+03        83     0.746     0.771     0.806     0.758
+           stop sign     5e+03        84     0.826     0.655     0.758     0.731
+       parking meter     5e+03        59      0.37     0.475     0.427     0.416
+               bench     5e+03       471     0.564     0.223     0.262      0.32
+                bird     5e+03       453     0.443     0.442     0.423     0.442
+                 cat     5e+03       195     0.707      0.61     0.661     0.655
+                 dog     5e+03       223     0.476     0.652     0.621      0.55
+               horse     5e+03       305     0.693     0.679     0.727     0.686
+               sheep     5e+03       306     0.417     0.657     0.595      0.51
+                 cow     5e+03       376     0.642     0.577     0.603     0.608
+            elephant     5e+03       283     0.814     0.802      0.86     0.808
+                bear     5e+03        53     0.601     0.511     0.602     0.552
+               zebra     5e+03       275     0.778     0.796     0.854     0.787
+             giraffe     5e+03       170     0.863     0.738     0.826     0.795
+            backpack     5e+03       384     0.391     0.263     0.249     0.314
+            umbrella     5e+03       387     0.605     0.509     0.519     0.553
+             handbag     5e+03       483     0.511     0.139     0.175     0.218
+                 tie     5e+03       290     0.488     0.503      0.48     0.496
+            suitcase     5e+03       309     0.635     0.447     0.506     0.524
+             frisbee     5e+03       109     0.715     0.615     0.674     0.661
+                skis     5e+03       281     0.419     0.345     0.317     0.379
+           snowboard     5e+03        90     0.611     0.389     0.438     0.475
+         sports ball     5e+03       233     0.789     0.498     0.573      0.61
+                kite     5e+03       381     0.596     0.312     0.397      0.41
+        baseball bat     5e+03       123     0.571     0.476     0.483     0.519
+      baseball glove     5e+03       139     0.639     0.338      0.43     0.442
+          skateboard     5e+03       215     0.782     0.577     0.654     0.664
+           surfboard     5e+03       266      0.62     0.466     0.473     0.532
+       tennis racket     5e+03       183     0.691     0.689     0.722      0.69
+              bottle     5e+03       939      0.52     0.476      0.46     0.497
+          wine glass     5e+03       363     0.528     0.548      0.53     0.538
+                 cup     5e+03       891     0.561     0.473     0.507     0.513
+                fork     5e+03       234     0.597     0.278     0.336      0.38
+               knife     5e+03       290      0.54     0.186     0.229     0.277
+               spoon     5e+03       253     0.465     0.166     0.204     0.245
+                bowl     5e+03       617     0.467     0.543     0.501     0.502
+              banana     5e+03       359     0.501      0.32      0.38     0.391
+               apple     5e+03       158     0.343     0.264     0.221     0.299
+            sandwich     5e+03       158     0.367     0.494     0.423     0.421
+              orange     5e+03       185     0.342     0.357     0.304     0.349
+            broccoli     5e+03       330     0.459     0.327      0.33     0.382
+              carrot     5e+03       341     0.475     0.273     0.312     0.346
+             hot dog     5e+03       160      0.62     0.338     0.406     0.437
+               pizza     5e+03       223     0.716     0.502     0.584     0.591
+               donut     5e+03       225     0.591     0.571     0.618     0.581
+                cake     5e+03       236     0.587     0.415     0.502     0.487
+               chair     5e+03  1.59e+03     0.497     0.407     0.409     0.447
+               couch     5e+03       236     0.584     0.496     0.527     0.536
+        potted plant     5e+03       429     0.571     0.326     0.386     0.415
+                 bed     5e+03       195     0.593     0.598     0.608     0.595
+        dining table     5e+03       633     0.601      0.43     0.469     0.501
+              toilet     5e+03       179     0.585     0.754     0.747     0.659
+                  tv     5e+03       257     0.729     0.596     0.685     0.656
+              laptop     5e+03       236     0.709      0.62     0.674     0.661
+               mouse     5e+03        95     0.546     0.642     0.645      0.59
+              remote     5e+03       241     0.477     0.469     0.424     0.473
+            keyboard     5e+03       117      0.49     0.709     0.659     0.579
+          cell phone     5e+03       291     0.602      0.33     0.367     0.426
+           microwave     5e+03        88     0.862     0.523     0.648     0.651
+                oven     5e+03       142     0.615      0.38     0.478      0.47
+             toaster     5e+03        11     0.899     0.273     0.504     0.419
+                sink     5e+03       211     0.577     0.545     0.526     0.561
+        refrigerator     5e+03       107     0.663     0.477     0.551     0.555
+                book     5e+03  1.03e+03     0.307     0.245     0.186     0.273
+               clock     5e+03       290     0.812     0.579     0.666     0.676
+                vase     5e+03       350     0.515     0.571     0.536     0.542
+            scissors     5e+03        56      0.61     0.195     0.284     0.296
+          teddy bear     5e+03       238     0.446     0.559     0.519     0.496
+          hair drier     5e+03        11         1    0.0909       0.1     0.167
+          toothbrush     5e+03        77     0.405     0.286     0.253     0.335
+Speed: 20.3/1.6/21.9 ms inference/NMS/total per 416x416 image at batch-size 1 at block K=3
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=4.95s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=4.05s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=60.86s).
+Accumulating evaluation results...
+DONE (t=6.47s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.327
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.515
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.346
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.162
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.369
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.443
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.288
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.470
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.515
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.322
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.568
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.640
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.525     0.585     0.559     0.539
+              person     5e+03  1.05e+04     0.698     0.678      0.72     0.688
+             bicycle     5e+03       313     0.511     0.497      0.49     0.504
+                 car     5e+03  1.64e+03       0.5     0.625     0.591     0.556
+          motorcycle     5e+03       388     0.463     0.647     0.592      0.54
+            airplane     5e+03       131     0.473     0.794     0.731     0.593
+                 bus     5e+03       259     0.636     0.807     0.821     0.711
+               train     5e+03       212     0.766     0.743     0.792     0.754
+               truck     5e+03       352     0.518      0.54     0.542     0.529
+                boat     5e+03       458     0.466      0.45     0.421     0.458
+       traffic light     5e+03       516     0.562     0.481     0.472     0.518
+        fire hydrant     5e+03        83     0.773      0.78     0.826     0.776
+           stop sign     5e+03        84     0.608      0.69     0.718     0.646
+       parking meter     5e+03        59     0.457     0.471     0.446     0.464
+               bench     5e+03       471     0.404     0.363     0.317     0.382
+                bird     5e+03       453     0.388      0.55     0.465     0.455
+                 cat     5e+03       195      0.55     0.728     0.712     0.627
+                 dog     5e+03       223     0.403      0.83     0.746     0.543
+               horse     5e+03       305     0.653     0.784     0.788     0.712
+               sheep     5e+03       306     0.291     0.706     0.538     0.412
+                 cow     5e+03       376     0.668     0.649     0.666     0.659
+            elephant     5e+03       283     0.705     0.873     0.877      0.78
+                bear     5e+03        53     0.776     0.717     0.777     0.745
+               zebra     5e+03       275     0.734     0.833      0.86      0.78
+             giraffe     5e+03       170      0.81     0.829      0.86     0.819
+            backpack     5e+03       384     0.308     0.477     0.311     0.374
+            umbrella     5e+03       387     0.484     0.643     0.581     0.552
+             handbag     5e+03       483     0.409     0.232     0.215     0.296
+                 tie     5e+03       290     0.465       0.6     0.554     0.524
+            suitcase     5e+03       309     0.515     0.625     0.594     0.564
+             frisbee     5e+03       109     0.586      0.67     0.668     0.625
+                skis     5e+03       281     0.496      0.42     0.419     0.455
+           snowboard     5e+03        90     0.561     0.422      0.47     0.482
+         sports ball     5e+03       233     0.706     0.545     0.583     0.615
+                kite     5e+03       381     0.602     0.381     0.462     0.466
+        baseball bat     5e+03       123      0.59     0.634     0.615     0.611
+      baseball glove     5e+03       139     0.622     0.417     0.481     0.499
+          skateboard     5e+03       215     0.763     0.629     0.684      0.69
+           surfboard     5e+03       266     0.601      0.56     0.537      0.58
+       tennis racket     5e+03       183     0.588      0.76     0.727     0.663
+              bottle     5e+03       939     0.438     0.564     0.468     0.493
+          wine glass     5e+03       363     0.464     0.598     0.539     0.523
+                 cup     5e+03       891     0.477     0.547     0.515      0.51
+                fork     5e+03       234     0.576     0.419     0.429     0.485
+               knife     5e+03       290     0.467     0.314     0.283     0.375
+               spoon     5e+03       253     0.381     0.277     0.253     0.321
+                bowl     5e+03       617     0.348      0.64     0.489     0.451
+              banana     5e+03       359     0.393     0.446     0.387     0.417
+               apple     5e+03       158     0.285     0.399     0.267     0.333
+            sandwich     5e+03       158      0.28     0.696     0.532     0.399
+              orange     5e+03       185     0.262     0.459     0.314     0.333
+            broccoli     5e+03       330     0.386     0.542     0.427     0.451
+              carrot     5e+03       341     0.417      0.39     0.338     0.403
+             hot dog     5e+03       160     0.545     0.479     0.459      0.51
+               pizza     5e+03       223     0.546     0.655     0.643     0.596
+               donut     5e+03       225     0.527     0.662     0.656     0.587
+                cake     5e+03       236     0.593     0.518     0.579     0.553
+               chair     5e+03  1.59e+03     0.421     0.523     0.471     0.466
+               couch     5e+03       236     0.492     0.677     0.593      0.57
+        potted plant     5e+03       429     0.367     0.587     0.449     0.452
+                 bed     5e+03       195     0.581     0.656     0.661     0.616
+        dining table     5e+03       633     0.495     0.567     0.512     0.529
+              toilet     5e+03       179     0.555      0.83     0.797     0.665
+                  tv     5e+03       257     0.586     0.778     0.761     0.668
+              laptop     5e+03       236      0.52     0.767     0.717      0.62
+               mouse     5e+03        95     0.611     0.674     0.694     0.641
+              remote     5e+03       241     0.389     0.572     0.483     0.463
+            keyboard     5e+03       117     0.494     0.769     0.733     0.601
+          cell phone     5e+03       291     0.506     0.388     0.397     0.439
+           microwave     5e+03        88     0.735     0.693     0.715     0.714
+                oven     5e+03       142     0.553     0.648     0.607     0.597
+             toaster     5e+03        11      0.92     0.364     0.577     0.521
+                sink     5e+03       211     0.508     0.583     0.545     0.543
+        refrigerator     5e+03       107     0.383     0.692     0.667     0.493
+                book     5e+03  1.03e+03     0.261     0.329     0.207     0.291
+               clock     5e+03       290     0.659     0.641     0.654      0.65
+                vase     5e+03       350     0.498     0.683     0.631     0.576
+            scissors     5e+03        56     0.492     0.393     0.445     0.437
+          teddy bear     5e+03       238     0.381     0.723     0.588     0.499
+          hair drier     5e+03        11     0.682     0.182     0.224     0.287
+          toothbrush     5e+03        77     0.426     0.429      0.37     0.427
+Speed: 24.8/1.3/26.2 ms inference/NMS/total per 416x416 image at batch-size 1 at block K=4
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=5.27s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=5.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=67.65s).
+Accumulating evaluation results...
+DONE (t=10.81s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.365
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.564
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.389
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.181
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.427
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.504
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.310
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.510
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.557
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.348
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.619
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.724
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.488    0.0431    0.0792    0.0667
+              person     5e+03  1.05e+04     0.797     0.116     0.267     0.202
+             bicycle     5e+03       313     0.705    0.0607    0.0985     0.112
+                 car     5e+03  1.64e+03     0.748     0.192     0.289     0.305
+          motorcycle     5e+03       388      0.78    0.0183    0.0429    0.0357
+            airplane     5e+03       131     0.151     0.084    0.0597     0.108
+                 bus     5e+03       259     0.452   0.00386    0.0386   0.00766
+               train     5e+03       212         0         0    0.0341         0
+               truck     5e+03       352     0.617    0.0367    0.0817    0.0692
+                boat     5e+03       458     0.638    0.0175    0.0616     0.034
+       traffic light     5e+03       516     0.702     0.169     0.247     0.272
+        fire hydrant     5e+03        83     0.912     0.125     0.224      0.22
+           stop sign     5e+03        84     0.698     0.131     0.205     0.221
+       parking meter     5e+03        59     0.569    0.0898      0.14     0.155
+               bench     5e+03       471         0         0   0.00658         0
+                bird     5e+03       453    0.0434     0.252    0.0586     0.074
+                 cat     5e+03       195     0.453   0.00513    0.0105    0.0101
+                 dog     5e+03       223         0         0    0.0086         0
+               horse     5e+03       305      0.77    0.0164    0.0309    0.0321
+               sheep     5e+03       306     0.321    0.0425    0.0556     0.075
+                 cow     5e+03       376      0.68    0.0426     0.142    0.0801
+            elephant     5e+03       283     0.746    0.0208    0.0515    0.0405
+                bear     5e+03        53         0         0   0.00111         0
+               zebra     5e+03       275     0.718    0.0255    0.0833    0.0492
+             giraffe     5e+03       170         0         0    0.0134         0
+            backpack     5e+03       384     0.729    0.0141    0.0465    0.0276
+            umbrella     5e+03       387     0.737    0.0218    0.0719    0.0424
+             handbag     5e+03       483     0.452   0.00522     0.032    0.0103
+                 tie     5e+03       290     0.565     0.166     0.153     0.256
+            suitcase     5e+03       309     0.873   0.00647    0.0152    0.0128
+             frisbee     5e+03       109     0.865     0.177     0.366     0.293
+                skis     5e+03       281     0.416    0.0249    0.0438     0.047
+           snowboard     5e+03        90         1    0.0319    0.0488    0.0618
+         sports ball     5e+03       233     0.878     0.309     0.434     0.457
+                kite     5e+03       381     0.652    0.0787     0.169      0.14
+        baseball bat     5e+03       123         1    0.0213    0.0829    0.0417
+      baseball glove     5e+03       139         1    0.0276       0.1    0.0536
+          skateboard     5e+03       215     0.648    0.0771     0.115     0.138
+           surfboard     5e+03       266     0.765    0.0376    0.0939    0.0717
+       tennis racket     5e+03       183     0.802     0.104     0.174     0.184
+              bottle     5e+03       939     0.819     0.049     0.166    0.0924
+          wine glass     5e+03       363     0.983    0.0441     0.159    0.0844
+                 cup     5e+03       891     0.836    0.0285     0.133    0.0552
+                fork     5e+03       234         0         0   0.00143         0
+               knife     5e+03       290         1   0.00345     0.008   0.00687
+               spoon     5e+03       253         0         0   0.00533         0
+                bowl     5e+03       617     0.861    0.0403     0.139     0.077
+              banana     5e+03       359     0.608    0.0223    0.0398     0.043
+               apple     5e+03       158    0.0402   0.00633    0.0114    0.0109
+            sandwich     5e+03       158         0         0         0         0
+              orange     5e+03       185     0.206   0.00541    0.0253    0.0105
+            broccoli     5e+03       330         0         0   0.00792         0
+              carrot     5e+03       341         1   0.00293     0.027   0.00585
+             hot dog     5e+03       160         0         0  0.000333         0
+               pizza     5e+03       223         0         0   0.00368         0
+               donut     5e+03       225         1    0.0129    0.0572    0.0255
+                cake     5e+03       236     0.112   0.00648   0.00674    0.0123
+               chair     5e+03  1.59e+03     0.514   0.00502    0.0371   0.00994
+               couch     5e+03       236         0         0         0         0
+        potted plant     5e+03       429     0.566    0.0122    0.0633    0.0239
+                 bed     5e+03       195     0.194    0.0103      0.04    0.0195
+        dining table     5e+03       633         0         0    0.0525         0
+              toilet     5e+03       179    0.0894    0.0112    0.0164    0.0199
+                  tv     5e+03       257     0.928    0.0195    0.0504    0.0381
+              laptop     5e+03       236         1   0.00424    0.0525   0.00844
+               mouse     5e+03        95         1    0.0199     0.162    0.0389
+              remote     5e+03       241     0.776    0.0373     0.136    0.0713
+            keyboard     5e+03       117         1   0.00855    0.0384    0.0169
+          cell phone     5e+03       291     0.478    0.0378    0.0613    0.0701
+           microwave     5e+03        88         0         0         0         0
+                oven     5e+03       142         0         0  0.000757         0
+             toaster     5e+03        11         0         0         0         0
+                sink     5e+03       211     0.793    0.0365    0.0858    0.0698
+        refrigerator     5e+03       107         0         0         0         0
+                book     5e+03  1.03e+03    0.0317  0.000154    0.0205  0.000306
+               clock     5e+03       290      0.57     0.424     0.424     0.486
+                vase     5e+03       350     0.425      0.04    0.0641    0.0731
+            scissors     5e+03        56         0         0  0.000283         0
+          teddy bear     5e+03       238         0         0   0.00495         0
+          hair drier     5e+03        11         0         0         0         0
+          toothbrush     5e+03        77     0.333     0.013    0.0341     0.025
+Speed: 9.3/1.2/10.5 ms inference/NMS/total per 512x512 image at batch-size 1 at block K=1
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=4.46s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=3.66s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=27.16s).
+Accumulating evaluation results...
+DONE (t=5.71s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.046
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.084
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.047
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.065
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.050
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.015
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.062
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.106
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.115
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.153
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.112
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.038
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.591     0.256     0.308     0.329
+              person     5e+03  1.05e+04     0.721     0.542     0.615     0.619
+             bicycle     5e+03       313     0.524     0.299     0.343     0.381
+                 car     5e+03  1.64e+03     0.543     0.513     0.508     0.528
+          motorcycle     5e+03       388     0.486     0.364      0.37     0.416
+            airplane     5e+03       131      0.43     0.344     0.352     0.382
+                 bus     5e+03       259     0.851     0.418      0.55     0.561
+               train     5e+03       212     0.917     0.311     0.476     0.464
+               truck     5e+03       352     0.609     0.323     0.394     0.422
+                boat     5e+03       458      0.58     0.148     0.213     0.236
+       traffic light     5e+03       516     0.633     0.324     0.394     0.428
+        fire hydrant     5e+03        83     0.698     0.697     0.724     0.698
+           stop sign     5e+03        84     0.707      0.43     0.571     0.535
+       parking meter     5e+03        59     0.401     0.339     0.325     0.367
+               bench     5e+03       471     0.717    0.0431     0.111    0.0812
+                bird     5e+03       453     0.266     0.344     0.241       0.3
+                 cat     5e+03       195     0.722     0.226     0.367     0.344
+                 dog     5e+03       223     0.447     0.318     0.313     0.372
+               horse     5e+03       305     0.771     0.416     0.499     0.541
+               sheep     5e+03       306     0.474     0.399     0.423     0.433
+                 cow     5e+03       376     0.627     0.411     0.462     0.496
+            elephant     5e+03       283     0.725     0.541     0.628      0.62
+                bear     5e+03        53     0.257     0.189     0.199     0.217
+               zebra     5e+03       275      0.84     0.611      0.72     0.707
+             giraffe     5e+03       170     0.987     0.456     0.664     0.624
+            backpack     5e+03       384      0.56     0.107     0.163     0.179
+            umbrella     5e+03       387     0.685     0.208     0.315     0.319
+             handbag     5e+03       483     0.533      0.06     0.092     0.108
+                 tie     5e+03       290     0.427     0.317     0.279     0.364
+            suitcase     5e+03       309     0.723     0.104     0.184     0.181
+             frisbee     5e+03       109     0.705     0.483     0.545     0.574
+                skis     5e+03       281     0.372     0.246     0.192     0.296
+           snowboard     5e+03        90     0.587     0.206     0.248     0.305
+         sports ball     5e+03       233     0.713     0.451     0.557     0.552
+                kite     5e+03       381     0.608     0.187     0.295     0.286
+        baseball bat     5e+03       123     0.596     0.268     0.273      0.37
+      baseball glove     5e+03       139     0.621     0.223      0.33     0.328
+          skateboard     5e+03       215      0.71     0.399     0.461     0.511
+           surfboard     5e+03       266     0.585     0.237     0.286     0.337
+       tennis racket     5e+03       183     0.721     0.568     0.593     0.636
+              bottle     5e+03       939     0.575     0.314     0.363     0.407
+          wine glass     5e+03       363     0.623     0.377     0.403      0.47
+                 cup     5e+03       891     0.601      0.31     0.363     0.409
+                fork     5e+03       234     0.617    0.0983     0.143      0.17
+               knife     5e+03       290     0.716    0.0586     0.112     0.108
+               spoon     5e+03       253      0.47    0.0435    0.0708    0.0796
+                bowl     5e+03       617     0.604     0.257     0.335     0.361
+              banana     5e+03       359     0.451       0.1      0.13     0.164
+               apple     5e+03       158     0.314     0.165     0.154     0.216
+            sandwich     5e+03       158     0.336     0.038    0.0951    0.0682
+              orange     5e+03       185      0.38     0.196     0.174     0.258
+            broccoli     5e+03       330     0.367    0.0485     0.106    0.0856
+              carrot     5e+03       341     0.358    0.0587     0.129     0.101
+             hot dog     5e+03       160     0.704    0.0938     0.138     0.165
+               pizza     5e+03       223     0.779    0.0942     0.208     0.168
+               donut     5e+03       225      0.67     0.325     0.422     0.437
+                cake     5e+03       236     0.438     0.169     0.199     0.244
+               chair     5e+03  1.59e+03     0.522     0.165     0.204     0.251
+               couch     5e+03       236     0.652    0.0952     0.195     0.166
+        potted plant     5e+03       429     0.674     0.121     0.201     0.205
+                 bed     5e+03       195     0.426     0.277     0.261     0.336
+        dining table     5e+03       633     0.839     0.109     0.258     0.193
+              toilet     5e+03       179       0.4     0.441     0.387      0.42
+                  tv     5e+03       257     0.782     0.218     0.338     0.341
+              laptop     5e+03       236      0.73     0.318     0.402     0.443
+               mouse     5e+03        95     0.725     0.347     0.448      0.47
+              remote     5e+03       241     0.569     0.266     0.283     0.362
+            keyboard     5e+03       117     0.518     0.316     0.353     0.393
+          cell phone     5e+03       291     0.505      0.22     0.232     0.306
+           microwave     5e+03        88     0.631    0.0203     0.171    0.0393
+                oven     5e+03       142     0.716    0.0709     0.134     0.129
+             toaster     5e+03        11         1    0.0909     0.164     0.167
+                sink     5e+03       211     0.503     0.292      0.31      0.37
+        refrigerator     5e+03       107         1    0.0174     0.098    0.0342
+                book     5e+03  1.03e+03     0.266    0.0737    0.0855     0.115
+               clock     5e+03       290      0.81     0.538     0.624     0.646
+                vase     5e+03       350     0.418     0.349     0.301      0.38
+            scissors     5e+03        56     0.541    0.0179    0.0332    0.0346
+          teddy bear     5e+03       238     0.574     0.193     0.227     0.289
+          hair drier     5e+03        11         0         0         0         0
+          toothbrush     5e+03        77     0.425     0.117     0.119     0.183
+Speed: 15.6/1.2/16.9 ms inference/NMS/total per 512x512 image at batch-size 1 at block K=2
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=4.86s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=3.53s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=50.56s).
+Accumulating evaluation results...
+DONE (t=5.89s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.191
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.317
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.198
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.133
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.212
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.211
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.199
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.340
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.376
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.294
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.394
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.379
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.564     0.484     0.499     0.508
+              person     5e+03  1.05e+04      0.67     0.701     0.724     0.685
+             bicycle     5e+03       313     0.516     0.453     0.464     0.482
+                 car     5e+03  1.64e+03     0.515      0.64     0.602     0.571
+          motorcycle     5e+03       388     0.499     0.603     0.572     0.546
+            airplane     5e+03       131     0.547     0.702     0.675     0.615
+                 bus     5e+03       259     0.774     0.707     0.779     0.739
+               train     5e+03       212     0.941       0.6     0.701     0.733
+               truck     5e+03       352     0.618     0.482     0.544     0.541
+                boat     5e+03       458     0.536     0.366     0.388     0.435
+       traffic light     5e+03       516     0.597     0.479      0.49     0.531
+        fire hydrant     5e+03        83     0.717     0.795     0.802     0.754
+           stop sign     5e+03        84     0.698     0.679     0.741     0.688
+       parking meter     5e+03        59     0.438     0.441     0.475     0.439
+               bench     5e+03       471      0.54     0.227      0.27      0.32
+                bird     5e+03       453     0.361     0.477     0.411     0.411
+                 cat     5e+03       195     0.636     0.544     0.603     0.586
+                 dog     5e+03       223     0.456     0.655     0.568     0.538
+               horse     5e+03       305     0.699     0.623     0.708     0.659
+               sheep     5e+03       306     0.395     0.699     0.598     0.505
+                 cow     5e+03       376     0.629     0.592     0.635      0.61
+            elephant     5e+03       283     0.786     0.766     0.822     0.776
+                bear     5e+03        53     0.554     0.491     0.505     0.521
+               zebra     5e+03       275     0.779     0.793     0.852     0.786
+             giraffe     5e+03       170     0.902     0.704     0.804     0.791
+            backpack     5e+03       384     0.397     0.292      0.28     0.336
+            umbrella     5e+03       387     0.606     0.497     0.517     0.546
+             handbag     5e+03       483     0.549     0.174     0.195     0.264
+                 tie     5e+03       290      0.46     0.524     0.461      0.49
+            suitcase     5e+03       309     0.575     0.408     0.458     0.477
+             frisbee     5e+03       109     0.658      0.67      0.71     0.664
+                skis     5e+03       281     0.425     0.406     0.324     0.415
+           snowboard     5e+03        90     0.545       0.4     0.413     0.461
+         sports ball     5e+03       233     0.703     0.529     0.625     0.604
+                kite     5e+03       381     0.571      0.36     0.425     0.441
+        baseball bat     5e+03       123     0.588     0.504      0.51     0.543
+      baseball glove     5e+03       139     0.601     0.374     0.444     0.461
+          skateboard     5e+03       215     0.733       0.6     0.651      0.66
+           surfboard     5e+03       266     0.616      0.47     0.505     0.533
+       tennis racket     5e+03       183     0.669     0.705     0.727     0.687
+              bottle     5e+03       939     0.486     0.551     0.495     0.516
+          wine glass     5e+03       363     0.502     0.548     0.532     0.524
+                 cup     5e+03       891     0.542     0.506     0.519     0.523
+                fork     5e+03       234     0.636     0.316     0.356     0.422
+               knife     5e+03       290      0.53     0.187     0.223     0.276
+               spoon     5e+03       253     0.445     0.174     0.199      0.25
+                bowl     5e+03       617     0.456     0.545     0.492     0.496
+              banana     5e+03       359     0.517     0.348     0.362     0.416
+               apple     5e+03       158     0.378     0.354     0.251     0.366
+            sandwich     5e+03       158       0.4       0.5     0.436     0.445
+              orange     5e+03       185     0.324     0.411     0.271     0.363
+            broccoli     5e+03       330     0.437     0.324     0.329     0.372
+              carrot     5e+03       341     0.447     0.293     0.307     0.354
+             hot dog     5e+03       160     0.505     0.319      0.35     0.391
+               pizza     5e+03       223     0.759     0.413     0.513     0.535
+               donut     5e+03       225     0.541     0.604     0.615     0.571
+                cake     5e+03       236     0.598     0.424       0.5     0.496
+               chair     5e+03  1.59e+03     0.511     0.423     0.419     0.463
+               couch     5e+03       236      0.62     0.453     0.495     0.524
+        potted plant     5e+03       429     0.538     0.326     0.365     0.406
+                 bed     5e+03       195     0.584     0.492     0.512     0.534
+        dining table     5e+03       633     0.643     0.338     0.408     0.443
+              toilet     5e+03       179     0.555     0.732     0.696     0.631
+                  tv     5e+03       257     0.698     0.599     0.659     0.645
+              laptop     5e+03       236     0.648      0.61      0.67     0.628
+               mouse     5e+03        95     0.594     0.684     0.682     0.636
+              remote     5e+03       241     0.465      0.49     0.437     0.477
+            keyboard     5e+03       117     0.496     0.675     0.649     0.572
+          cell phone     5e+03       291     0.539     0.344     0.372      0.42
+           microwave     5e+03        88     0.817     0.466     0.609     0.593
+                oven     5e+03       142     0.571     0.366     0.423     0.446
+             toaster     5e+03        11     0.827     0.273     0.397      0.41
+                sink     5e+03       211     0.535     0.564      0.52     0.549
+        refrigerator     5e+03       107     0.599     0.411     0.455     0.488
+                book     5e+03  1.03e+03     0.281     0.275     0.179     0.278
+               clock     5e+03       290     0.808     0.608     0.685     0.694
+                vase     5e+03       350     0.479     0.571     0.529     0.521
+            scissors     5e+03        56     0.553     0.179     0.231      0.27
+          teddy bear     5e+03       238     0.462     0.578     0.504     0.514
+          hair drier     5e+03        11         0         0   0.00787         0
+          toothbrush     5e+03        77     0.325     0.299     0.246     0.311
+Speed: 23.9/1.6/25.5 ms inference/NMS/total per 512x512 image at batch-size 1 at block K=3
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=4.55s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=4.21s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=61.78s).
+Accumulating evaluation results...
+DONE (t=6.63s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.322
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.507
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.343
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.189
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.373
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.395
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.282
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.474
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.523
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.368
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.570
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.604
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.481     0.597     0.551     0.519
+              person     5e+03  1.05e+04     0.665     0.722      0.74     0.693
+             bicycle     5e+03       313     0.405      0.53     0.497     0.459
+                 car     5e+03  1.64e+03     0.479     0.686      0.63     0.564
+          motorcycle     5e+03       388     0.459     0.678     0.605     0.547
+            airplane     5e+03       131     0.413     0.756     0.701     0.534
+                 bus     5e+03       259     0.599      0.83     0.812     0.696
+               train     5e+03       212     0.713     0.679     0.733     0.696
+               truck     5e+03       352     0.465     0.571     0.542     0.513
+                boat     5e+03       458      0.45     0.489     0.441     0.469
+       traffic light     5e+03       516     0.512     0.529     0.515      0.52
+        fire hydrant     5e+03        83     0.703     0.795     0.811     0.747
+           stop sign     5e+03        84      0.54     0.726      0.73     0.619
+       parking meter     5e+03        59     0.472     0.508     0.502      0.49
+               bench     5e+03       471     0.388     0.372     0.322      0.38
+                bird     5e+03       453     0.325      0.57     0.446     0.414
+                 cat     5e+03       195     0.541     0.672     0.636     0.599
+                 dog     5e+03       223     0.348     0.807     0.664     0.486
+               horse     5e+03       305     0.618     0.767     0.765     0.684
+               sheep     5e+03       306     0.215     0.712     0.513      0.33
+                 cow     5e+03       376     0.618      0.65      0.67     0.634
+            elephant     5e+03       283     0.632      0.88     0.866     0.736
+                bear     5e+03        53     0.647     0.604     0.618     0.625
+               zebra     5e+03       275     0.694     0.836     0.848     0.758
+             giraffe     5e+03       170     0.786     0.794     0.842      0.79
+            backpack     5e+03       384     0.287     0.505     0.329     0.366
+            umbrella     5e+03       387     0.465     0.667     0.578     0.548
+             handbag     5e+03       483     0.413     0.265      0.24     0.323
+                 tie     5e+03       290      0.41     0.628     0.534     0.496
+            suitcase     5e+03       309     0.436     0.616     0.588     0.511
+             frisbee     5e+03       109     0.475     0.743     0.675     0.579
+                skis     5e+03       281     0.447     0.431     0.406     0.439
+           snowboard     5e+03        90     0.506     0.478     0.449     0.491
+         sports ball     5e+03       233     0.691     0.571     0.623     0.625
+                kite     5e+03       381     0.615      0.42     0.501     0.499
+        baseball bat     5e+03       123     0.562     0.659     0.617     0.607
+      baseball glove     5e+03       139     0.598     0.432     0.507     0.502
+          skateboard     5e+03       215     0.729     0.656      0.69     0.691
+           surfboard     5e+03       266     0.549     0.579     0.556     0.564
+       tennis racket     5e+03       183     0.592     0.803     0.738     0.682
+              bottle     5e+03       939     0.398     0.662      0.51     0.498
+          wine glass     5e+03       363      0.39     0.642     0.545     0.485
+                 cup     5e+03       891     0.463     0.589     0.539     0.519
+                fork     5e+03       234     0.565     0.449     0.475       0.5
+               knife     5e+03       290     0.483     0.341     0.305       0.4
+               spoon     5e+03       253     0.342     0.317     0.271     0.329
+                bowl     5e+03       617     0.332     0.653     0.483      0.44
+              banana     5e+03       359     0.359      0.49     0.382     0.414
+               apple     5e+03       158     0.248     0.462     0.269     0.323
+            sandwich     5e+03       158     0.279     0.753      0.51     0.407
+              orange     5e+03       185     0.253     0.465     0.308     0.327
+            broccoli     5e+03       330     0.332     0.606     0.423     0.429
+              carrot     5e+03       341     0.373     0.422     0.341     0.396
+             hot dog     5e+03       160     0.472     0.485     0.447     0.478
+               pizza     5e+03       223     0.481     0.583     0.576     0.527
+               donut     5e+03       225     0.396     0.711       0.6     0.509
+                cake     5e+03       236     0.577     0.517     0.553     0.545
+               chair     5e+03  1.59e+03     0.418     0.556     0.487     0.477
+               couch     5e+03       236     0.489     0.606     0.571     0.541
+        potted plant     5e+03       429     0.327     0.576     0.445     0.417
+                 bed     5e+03       195      0.61     0.538     0.573     0.572
+        dining table     5e+03       633     0.532      0.49     0.454      0.51
+              toilet     5e+03       179     0.502     0.788     0.765     0.613
+                  tv     5e+03       257     0.516     0.786     0.759     0.623
+              laptop     5e+03       236     0.483     0.758     0.708      0.59
+               mouse     5e+03        95      0.63     0.716     0.723      0.67
+              remote     5e+03       241     0.378     0.581     0.501     0.458
+            keyboard     5e+03       117     0.458     0.769     0.701     0.574
+          cell phone     5e+03       291     0.482     0.444     0.415     0.462
+           microwave     5e+03        88      0.67     0.693     0.734     0.681
+                oven     5e+03       142     0.556     0.627     0.599     0.589
+             toaster     5e+03        11      0.56     0.364     0.483     0.441
+                sink     5e+03       211     0.467     0.602     0.551     0.526
+        refrigerator     5e+03       107     0.329     0.673     0.576     0.442
+                book     5e+03  1.03e+03     0.237     0.381     0.202     0.292
+               clock     5e+03       290     0.626     0.698     0.678      0.66
+                vase     5e+03       350     0.437     0.677     0.624     0.531
+            scissors     5e+03        56     0.396     0.357     0.354     0.376
+          teddy bear     5e+03       238     0.353     0.752     0.595      0.48
+          hair drier     5e+03        11     0.508    0.0909     0.146     0.154
+          toothbrush     5e+03        77     0.352     0.481      0.39     0.407
+Speed: 30.3/1.6/31.9 ms inference/NMS/total per 512x512 image at batch-size 1 at block K=4
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=4.89s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=5.31s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=74.55s).
+Accumulating evaluation results...
+DONE (t=9.77s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.360
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.556
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.383
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.215
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.432
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.448
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.305
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.519
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.572
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.398
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.640
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.688
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.478    0.0399    0.0705    0.0614
+              person     5e+03  1.05e+04     0.767     0.112     0.234     0.196
+             bicycle     5e+03       313     0.591    0.0462    0.0764    0.0858
+                 car     5e+03  1.64e+03     0.727     0.172     0.262     0.278
+          motorcycle     5e+03       388         1    0.0169    0.0319    0.0333
+            airplane     5e+03       131    0.0785    0.0687    0.0298    0.0733
+                 bus     5e+03       259         0         0    0.0159         0
+               train     5e+03       212         0         0     0.022         0
+               truck     5e+03       352     0.781    0.0312    0.0699    0.0601
+                boat     5e+03       458     0.605    0.0131    0.0553    0.0256
+       traffic light     5e+03       516     0.678     0.174     0.246     0.277
+        fire hydrant     5e+03        83     0.821    0.0964       0.2     0.173
+           stop sign     5e+03        84     0.653     0.119     0.184     0.201
+       parking meter     5e+03        59     0.708     0.119      0.17     0.203
+               bench     5e+03       471         0         0   0.00587         0
+                bird     5e+03       453    0.0262     0.243    0.0427    0.0473
+                 cat     5e+03       195      0.35   0.00513   0.00883    0.0101
+                 dog     5e+03       223         0         0   0.00696         0
+               horse     5e+03       305     0.632    0.0131    0.0294    0.0257
+               sheep     5e+03       306     0.277    0.0425    0.0503    0.0737
+                 cow     5e+03       376     0.715    0.0334     0.131    0.0639
+            elephant     5e+03       283     0.718     0.018    0.0607    0.0351
+                bear     5e+03        53         0         0   0.00224         0
+               zebra     5e+03       275     0.494    0.0142    0.0776    0.0277
+             giraffe     5e+03       170         0         0   0.00674         0
+            backpack     5e+03       384     0.878    0.0188    0.0472    0.0368
+            umbrella     5e+03       387     0.991    0.0207    0.0608    0.0405
+             handbag     5e+03       483     0.786   0.00828    0.0273    0.0164
+                 tie     5e+03       290       0.5     0.134     0.149     0.212
+            suitcase     5e+03       309         1   0.00509   0.00996    0.0101
+             frisbee     5e+03       109     0.867      0.18     0.371     0.299
+                skis     5e+03       281     0.462    0.0498    0.0423    0.0899
+           snowboard     5e+03        90     0.717    0.0222    0.0506    0.0431
+         sports ball     5e+03       233     0.826     0.296     0.414     0.436
+                kite     5e+03       381     0.531    0.0787     0.158     0.137
+        baseball bat     5e+03       123         1    0.0296    0.0779    0.0575
+      baseball glove     5e+03       139      0.86    0.0216     0.116    0.0421
+          skateboard     5e+03       215     0.559    0.0605     0.093     0.109
+           surfboard     5e+03       266     0.718    0.0376    0.0784    0.0714
+       tennis racket     5e+03       183     0.752     0.083     0.135     0.149
+              bottle     5e+03       939     0.801    0.0513     0.154    0.0964
+          wine glass     5e+03       363     0.883    0.0415     0.129    0.0793
+                 cup     5e+03       891     0.934    0.0318     0.132    0.0616
+                fork     5e+03       234     0.182   0.00155    0.0025   0.00308
+               knife     5e+03       290         0         0  0.000833         0
+               spoon     5e+03       253         0         0   0.00569         0
+                bowl     5e+03       617     0.898     0.034     0.123    0.0656
+              banana     5e+03       359     0.774    0.0191    0.0353    0.0373
+               apple     5e+03       158         0         0   0.00795         0
+            sandwich     5e+03       158         0         0     0.001         0
+              orange     5e+03       185     0.103   0.00541    0.0172    0.0103
+            broccoli     5e+03       330         0         0   0.00371         0
+              carrot     5e+03       341         1   0.00293    0.0152   0.00585
+             hot dog     5e+03       160         0         0  0.000333         0
+               pizza     5e+03       223         1   0.00448   0.00561   0.00893
+               donut     5e+03       225         1     0.012    0.0485    0.0237
+                cake     5e+03       236     0.197   0.00847   0.00702    0.0162
+               chair     5e+03  1.59e+03     0.508   0.00314    0.0286   0.00623
+               couch     5e+03       236         0         0         0         0
+        potted plant     5e+03       429     0.754    0.0163    0.0574    0.0319
+                 bed     5e+03       195     0.184   0.00188     0.033   0.00373
+        dining table     5e+03       633         1   0.00158    0.0266   0.00315
+              toilet     5e+03       179    0.0653   0.00559   0.00507    0.0103
+                  tv     5e+03       257         1    0.0167     0.046    0.0329
+              laptop     5e+03       236         1   0.00424     0.047   0.00844
+               mouse     5e+03        95      0.72    0.0421     0.156    0.0796
+              remote     5e+03       241     0.831    0.0373     0.136    0.0715
+            keyboard     5e+03       117         0         0    0.0245         0
+          cell phone     5e+03       291     0.402    0.0309    0.0408    0.0574
+           microwave     5e+03        88         0         0         0         0
+                oven     5e+03       142         0         0    0.0013         0
+             toaster     5e+03        11         0         0         0         0
+                sink     5e+03       211     0.627    0.0161     0.044    0.0315
+        refrigerator     5e+03       107         0         0         0         0
+                book     5e+03  1.03e+03     0.031   0.00012    0.0158   0.00024
+               clock     5e+03       290     0.471     0.352     0.352     0.403
+                vase     5e+03       350     0.426    0.0429    0.0531    0.0779
+            scissors     5e+03        56         0         0   0.00014         0
+          teddy bear     5e+03       238         0         0   0.00173         0
+          hair drier     5e+03        11         0         0  0.000306         0
+          toothbrush     5e+03        77     0.397     0.026    0.0296    0.0488
+Speed: 13.2/1.4/14.6 ms inference/NMS/total per 608x608 image at batch-size 1 at block K=1
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=5.31s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=4.74s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=28.69s).
+Accumulating evaluation results...
+DONE (t=6.22s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.042
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.075
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.041
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.062
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.040
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.013
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.057
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.099
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.108
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.165
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.087
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.033
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04      0.56     0.243     0.283      0.31
+              person     5e+03  1.05e+04     0.701     0.531     0.593     0.604
+             bicycle     5e+03       313     0.538     0.297     0.339     0.383
+                 car     5e+03  1.64e+03     0.539     0.519     0.504     0.529
+          motorcycle     5e+03       388     0.476     0.343     0.351     0.398
+            airplane     5e+03       131     0.374     0.323     0.283     0.347
+                 bus     5e+03       259     0.855     0.371      0.51     0.517
+               train     5e+03       212     0.872      0.32     0.458     0.468
+               truck     5e+03       352     0.623     0.293     0.371     0.398
+                boat     5e+03       458     0.583      0.14     0.211     0.225
+       traffic light     5e+03       516     0.599     0.322     0.375     0.419
+        fire hydrant     5e+03        83     0.654     0.651     0.694     0.652
+           stop sign     5e+03        84     0.816      0.44     0.571     0.572
+       parking meter     5e+03        59     0.518     0.441     0.412     0.476
+               bench     5e+03       471     0.743    0.0446    0.0953    0.0841
+                bird     5e+03       453     0.214     0.329     0.213      0.26
+                 cat     5e+03       195     0.569     0.215     0.279     0.312
+                 dog     5e+03       223     0.429     0.296     0.283      0.35
+               horse     5e+03       305     0.746     0.374     0.463     0.498
+               sheep     5e+03       306     0.493     0.395     0.425     0.439
+                 cow     5e+03       376     0.632      0.42     0.468     0.505
+            elephant     5e+03       283     0.712     0.527     0.578     0.606
+                bear     5e+03        53     0.204     0.226     0.158     0.215
+               zebra     5e+03       275     0.841     0.585     0.702      0.69
+             giraffe     5e+03       170     0.958     0.407     0.619     0.572
+            backpack     5e+03       384     0.577     0.122     0.153     0.202
+            umbrella     5e+03       387     0.764     0.204     0.293     0.322
+             handbag     5e+03       483     0.553    0.0642    0.0904     0.115
+                 tie     5e+03       290     0.413     0.317     0.271     0.359
+            suitcase     5e+03       309     0.591    0.0794     0.146      0.14
+             frisbee     5e+03       109     0.638     0.484     0.554      0.55
+                skis     5e+03       281     0.394     0.253     0.212     0.308
+           snowboard     5e+03        90     0.604     0.189     0.225     0.288
+         sports ball     5e+03       233     0.717     0.478     0.563     0.574
+                kite     5e+03       381     0.582     0.181     0.285     0.276
+        baseball bat     5e+03       123     0.551     0.195     0.242     0.288
+      baseball glove     5e+03       139     0.678     0.257     0.337     0.373
+          skateboard     5e+03       215     0.654     0.372     0.432     0.474
+           surfboard     5e+03       266     0.609     0.233     0.256     0.337
+       tennis racket     5e+03       183     0.697      0.53      0.57     0.602
+              bottle     5e+03       939     0.579     0.302     0.358     0.397
+          wine glass     5e+03       363     0.585     0.353     0.362      0.44
+                 cup     5e+03       891     0.571     0.295     0.348     0.389
+                fork     5e+03       234     0.537    0.0644    0.0925     0.115
+               knife     5e+03       290     0.839    0.0361    0.0844    0.0693
+               spoon     5e+03       253     0.324    0.0316      0.05    0.0576
+                bowl     5e+03       617     0.603     0.243     0.326     0.347
+              banana     5e+03       359     0.342    0.0808       0.1     0.131
+               apple     5e+03       158     0.286     0.152     0.134     0.198
+            sandwich     5e+03       158     0.163    0.0112    0.0354    0.0209
+              orange     5e+03       185     0.275     0.151      0.13     0.195
+            broccoli     5e+03       330     0.271    0.0364    0.0566    0.0641
+              carrot     5e+03       341     0.351    0.0616     0.106     0.105
+             hot dog     5e+03       160     0.842    0.0666       0.1     0.123
+               pizza     5e+03       223     0.822    0.0897     0.179     0.162
+               donut     5e+03       225     0.766     0.302     0.384     0.433
+                cake     5e+03       236     0.236     0.153     0.118     0.185
+               chair     5e+03  1.59e+03     0.533     0.154     0.185     0.239
+               couch     5e+03       236     0.578     0.072     0.169     0.128
+        potted plant     5e+03       429     0.675      0.11     0.197     0.189
+                 bed     5e+03       195     0.327     0.319     0.231     0.323
+        dining table     5e+03       633     0.769     0.137     0.273     0.233
+              toilet     5e+03       179     0.344     0.358     0.312     0.351
+                  tv     5e+03       257     0.752     0.175     0.303     0.284
+              laptop     5e+03       236      0.72     0.283     0.359     0.406
+               mouse     5e+03        95     0.713     0.287     0.434      0.41
+              remote     5e+03       241       0.6     0.266     0.279     0.368
+            keyboard     5e+03       117      0.53     0.274     0.315     0.361
+          cell phone     5e+03       291     0.436     0.215     0.208     0.288
+           microwave     5e+03        88     0.483    0.0114    0.0924    0.0222
+                oven     5e+03       142     0.692    0.0476     0.104    0.0891
+             toaster     5e+03        11         0         0    0.0418         0
+                sink     5e+03       211     0.485     0.251     0.251     0.331
+        refrigerator     5e+03       107         1    0.0167    0.0744    0.0328
+                book     5e+03  1.03e+03     0.289    0.0824    0.0799     0.128
+               clock     5e+03       290     0.791     0.523     0.586      0.63
+                vase     5e+03       350     0.368      0.32     0.243     0.342
+            scissors     5e+03        56     0.755    0.0357    0.0502    0.0682
+          teddy bear     5e+03       238     0.501     0.172      0.19     0.256
+          hair drier     5e+03        11         0         0         0         0
+          toothbrush     5e+03        77     0.361    0.0909      0.11     0.145
+Speed: 23.0/1.5/24.6 ms inference/NMS/total per 608x608 image at batch-size 1 at block K=2
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=5.19s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=3.98s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=52.27s).
+Accumulating evaluation results...
+DONE (t=6.50s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.176
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.291
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.179
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.138
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.201
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.174
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.184
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.319
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.354
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.302
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.371
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.333
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04     0.542     0.471     0.475      0.49
+              person     5e+03  1.05e+04     0.642     0.702     0.714     0.671
+             bicycle     5e+03       313     0.494     0.467     0.465      0.48
+                 car     5e+03  1.64e+03     0.514     0.651     0.608     0.574
+          motorcycle     5e+03       388     0.492     0.603     0.556     0.542
+            airplane     5e+03       131     0.477     0.626     0.605     0.541
+                 bus     5e+03       259     0.737     0.687     0.754     0.711
+               train     5e+03       212     0.933     0.594     0.677     0.726
+               truck     5e+03       352     0.641      0.48     0.519     0.549
+                boat     5e+03       458     0.532     0.341     0.392     0.415
+       traffic light     5e+03       516     0.556     0.457     0.476     0.502
+        fire hydrant     5e+03        83     0.725     0.807       0.8     0.764
+           stop sign     5e+03        84     0.733      0.69     0.733     0.711
+       parking meter     5e+03        59     0.522     0.536     0.522     0.529
+               bench     5e+03       471     0.523     0.221     0.249     0.311
+                bird     5e+03       453     0.315     0.483     0.398     0.381
+                 cat     5e+03       195     0.589     0.467     0.515     0.521
+                 dog     5e+03       223     0.403     0.641     0.555     0.495
+               horse     5e+03       305     0.678     0.597     0.676     0.635
+               sheep     5e+03       306     0.353      0.68     0.569     0.465
+                 cow     5e+03       376     0.619     0.598      0.63     0.609
+            elephant     5e+03       283     0.749     0.749     0.789     0.749
+                bear     5e+03        53     0.513     0.472     0.474     0.491
+               zebra     5e+03       275     0.737     0.807     0.835      0.77
+             giraffe     5e+03       170     0.918       0.7     0.789     0.794
+            backpack     5e+03       384     0.416     0.294     0.291     0.345
+            umbrella     5e+03       387     0.635     0.488     0.519     0.552
+             handbag     5e+03       483     0.519     0.161     0.195     0.245
+                 tie     5e+03       290     0.408     0.524     0.447     0.459
+            suitcase     5e+03       309     0.522     0.359     0.411     0.425
+             frisbee     5e+03       109     0.593     0.661     0.695     0.625
+                skis     5e+03       281     0.406     0.399     0.334     0.402
+           snowboard     5e+03        90     0.461     0.378     0.377     0.415
+         sports ball     5e+03       233     0.714     0.562     0.626     0.629
+                kite     5e+03       381     0.559     0.339     0.394     0.422
+        baseball bat     5e+03       123     0.582     0.498     0.478     0.537
+      baseball glove     5e+03       139     0.625      0.41     0.468     0.495
+          skateboard     5e+03       215     0.697     0.605     0.649     0.648
+           surfboard     5e+03       266     0.597     0.462     0.459     0.521
+       tennis racket     5e+03       183     0.649     0.721     0.724     0.683
+              bottle     5e+03       939     0.472     0.555     0.501      0.51
+          wine glass     5e+03       363      0.45     0.562     0.522       0.5
+                 cup     5e+03       891     0.542     0.514     0.526     0.528
+                fork     5e+03       234     0.554     0.291     0.328     0.381
+               knife     5e+03       290      0.57     0.196     0.223     0.292
+               spoon     5e+03       253     0.426     0.173     0.187     0.246
+                bowl     5e+03       617     0.444     0.556     0.477     0.494
+              banana     5e+03       359     0.399      0.29     0.288     0.336
+               apple     5e+03       158     0.287     0.316     0.221     0.301
+            sandwich     5e+03       158     0.388     0.424     0.353     0.405
+              orange     5e+03       185     0.309     0.378     0.235      0.34
+            broccoli     5e+03       330     0.438     0.314     0.273     0.366
+              carrot     5e+03       341     0.438     0.293     0.292     0.351
+             hot dog     5e+03       160       0.6     0.253     0.316     0.356
+               pizza     5e+03       223     0.773     0.367     0.454     0.498
+               donut     5e+03       225     0.514     0.582     0.582     0.546
+                cake     5e+03       236     0.497     0.419     0.451     0.455
+               chair     5e+03  1.59e+03     0.497     0.394     0.393      0.44
+               couch     5e+03       236     0.555     0.412     0.439     0.473
+        potted plant     5e+03       429     0.576     0.317     0.355     0.409
+                 bed     5e+03       195     0.492     0.487     0.464      0.49
+        dining table     5e+03       633     0.587     0.365     0.406      0.45
+              toilet     5e+03       179     0.535     0.659     0.626     0.591
+                  tv     5e+03       257     0.682     0.525     0.626     0.594
+              laptop     5e+03       236     0.617     0.619     0.645     0.618
+               mouse     5e+03        95     0.624     0.628     0.641     0.626
+              remote     5e+03       241     0.453     0.502     0.444     0.476
+            keyboard     5e+03       117     0.508     0.679     0.635     0.581
+          cell phone     5e+03       291     0.535     0.351     0.375     0.423
+           microwave     5e+03        88     0.817      0.42     0.571     0.555
+                oven     5e+03       142      0.68     0.324      0.39     0.439
+             toaster     5e+03        11     0.382     0.182     0.248     0.246
+                sink     5e+03       211     0.534     0.517     0.472     0.525
+        refrigerator     5e+03       107     0.602     0.346     0.356     0.439
+                book     5e+03  1.03e+03     0.275      0.29     0.176     0.282
+               clock     5e+03       290     0.768     0.607     0.654     0.678
+                vase     5e+03       350     0.448       0.6      0.51     0.513
+            scissors     5e+03        56     0.458     0.143     0.198     0.218
+          teddy bear     5e+03       238     0.441     0.501     0.473     0.469
+          hair drier     5e+03        11         0         0   0.00588         0
+          toothbrush     5e+03        77     0.414     0.377     0.284     0.394
+Speed: 31.4/1.6/33.0 ms inference/NMS/total per 608x608 image at batch-size 1 at block K=3
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=5.12s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=4.90s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=65.59s).
+Accumulating evaluation results...
+DONE (t=7.29s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.306
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.483
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.323
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.194
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.366
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.341
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.273
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.462
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.512
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.384
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.564
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.549
+Using CUDA device0 _CudaDeviceProperties(name='GeForce RTX 2080', total_memory=7977MB)
+
+Model Summary: 225 layers, 6.29987e+07 parameters, 6.29987e+07 gradients
+Fusing layers...
+Model Summary: 152 layers, 6.29719e+07 parameters, 6.29719e+07 gradients
+                 all     5e+03  3.51e+04      0.45      0.59     0.522     0.496
+              person     5e+03  1.05e+04     0.638     0.736     0.738     0.683
+             bicycle     5e+03       313     0.376     0.527     0.478     0.439
+                 car     5e+03  1.64e+03     0.462     0.711     0.648      0.56
+          motorcycle     5e+03       388     0.433      0.67     0.601     0.526
+            airplane     5e+03       131     0.349     0.695     0.608     0.464
+                 bus     5e+03       259     0.563      0.83     0.788     0.671
+               train     5e+03       212     0.684     0.679     0.695     0.681
+               truck     5e+03       352     0.424     0.584     0.516     0.492
+                boat     5e+03       458     0.411     0.456     0.428     0.433
+       traffic light     5e+03       516     0.481     0.535     0.505     0.506
+        fire hydrant     5e+03        83      0.66     0.819     0.797     0.731
+           stop sign     5e+03        84     0.461      0.75     0.718     0.571
+       parking meter     5e+03        59     0.461     0.593     0.533     0.519
+               bench     5e+03       471     0.338     0.367     0.289     0.352
+                bird     5e+03       453     0.274      0.57     0.442      0.37
+                 cat     5e+03       195     0.433     0.569     0.509     0.492
+                 dog     5e+03       223     0.278     0.798     0.626     0.412
+               horse     5e+03       305     0.566     0.751     0.726     0.646
+               sheep     5e+03       306     0.157     0.716     0.467     0.257
+                 cow     5e+03       376     0.624     0.652      0.69     0.637
+            elephant     5e+03       283     0.598     0.845     0.824       0.7
+                bear     5e+03        53     0.576     0.585     0.603     0.581
+               zebra     5e+03       275      0.68     0.869     0.833     0.763
+             giraffe     5e+03       170     0.793     0.771     0.803     0.781
+            backpack     5e+03       384     0.276     0.521     0.349     0.361
+            umbrella     5e+03       387     0.453     0.672     0.574     0.541
+             handbag     5e+03       483     0.398     0.292     0.263     0.337
+                 tie     5e+03       290     0.403     0.652     0.511     0.498
+            suitcase     5e+03       309     0.433     0.605     0.553     0.505
+             frisbee     5e+03       109     0.405     0.725     0.627      0.52
+                skis     5e+03       281     0.437     0.428     0.392     0.433
+           snowboard     5e+03        90     0.548       0.5     0.437     0.523
+         sports ball     5e+03       233     0.638     0.601     0.638     0.619
+                kite     5e+03       381     0.547     0.438     0.464     0.486
+        baseball bat     5e+03       123     0.569     0.667     0.623     0.614
+      baseball glove     5e+03       139     0.654     0.516     0.539     0.577
+          skateboard     5e+03       215     0.728     0.651     0.677     0.687
+           surfboard     5e+03       266     0.533     0.579     0.524     0.555
+       tennis racket     5e+03       183     0.552     0.787     0.747     0.649
+              bottle     5e+03       939     0.381     0.677     0.517     0.487
+          wine glass     5e+03       363     0.346     0.658     0.544     0.454
+                 cup     5e+03       891     0.447     0.625     0.562     0.521
+                fork     5e+03       234     0.559     0.419     0.427     0.479
+               knife     5e+03       290     0.429     0.321     0.288     0.367
+               spoon     5e+03       253     0.303     0.281     0.245     0.292
+                bowl     5e+03       617     0.314      0.65      0.46     0.424
+              banana     5e+03       359     0.305     0.518     0.336     0.384
+               apple     5e+03       158     0.198     0.468     0.239     0.278
+            sandwich     5e+03       158     0.261     0.696     0.422     0.379
+              orange     5e+03       185     0.212     0.486       0.3     0.295
+            broccoli     5e+03       330     0.304      0.56     0.379     0.394
+              carrot     5e+03       341     0.351     0.443     0.339     0.391
+             hot dog     5e+03       160     0.503     0.487     0.461     0.495
+               pizza     5e+03       223     0.442     0.552     0.496     0.491
+               donut     5e+03       225     0.341     0.693      0.58     0.457
+                cake     5e+03       236     0.572     0.511     0.531      0.54
+               chair     5e+03  1.59e+03     0.408     0.556     0.467     0.471
+               couch     5e+03       236     0.454     0.568     0.517     0.504
+        potted plant     5e+03       429      0.35     0.604     0.442     0.443
+                 bed     5e+03       195     0.521     0.523     0.523     0.522
+        dining table     5e+03       633     0.482     0.505     0.445     0.493
+              toilet     5e+03       179     0.452     0.754     0.694     0.565
+                  tv     5e+03       257     0.465     0.774     0.718     0.581
+              laptop     5e+03       236     0.446     0.771     0.674     0.565
+               mouse     5e+03        95     0.635     0.684      0.71     0.659
+              remote     5e+03       241     0.377     0.639     0.504     0.474
+            keyboard     5e+03       117     0.465     0.735     0.662      0.57
+          cell phone     5e+03       291      0.45      0.47     0.411      0.46
+           microwave     5e+03        88     0.564      0.67     0.694     0.613
+                oven     5e+03       142     0.475     0.514     0.479     0.494
+             toaster     5e+03        11     0.403     0.273     0.242     0.325
+                sink     5e+03       211     0.468     0.583     0.523     0.519
+        refrigerator     5e+03       107     0.293     0.607     0.456     0.395
+                book     5e+03  1.03e+03     0.207     0.369     0.183     0.265
+               clock     5e+03       290       0.6     0.683     0.659     0.638
+                vase     5e+03       350     0.401      0.68     0.594     0.505
+            scissors     5e+03        56     0.376     0.268     0.313     0.313
+          teddy bear     5e+03       238     0.339     0.693     0.559     0.456
+          hair drier     5e+03        11     0.529    0.0909     0.105     0.155
+          toothbrush     5e+03        77      0.31     0.442     0.314     0.364
+Speed: 37.3/1.1/38.4 ms inference/NMS/total per 608x608 image at batch-size 1 at block K=4
+
+COCO mAP with pycocotools...
+loading annotations into memory...
+Done (t=4.78s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=5.74s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=74.94s).
+Accumulating evaluation results...
+DONE (t=9.95s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.340
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.528
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.360
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.225
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.420
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.375
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.295
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.509
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.564
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.419
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.637
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.621

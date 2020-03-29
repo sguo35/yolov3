@@ -278,7 +278,11 @@ class Darknet(nn.Module):
                     intermediate_cache[cache_key] = x
             else:
                 if 'cache' in mdef:
-                    x = intermediate_cache[cache_key]
+                    #print(x.shape, intermediate_cache[cache_key].shape, mdef, cache_key)
+                    x = module(x)
+                    if cache_key not in intermediate_cache:
+                        raise Exception('Cache key ' + str(cache_key) + ' not found in cache!')
+                    x = intermediate_cache[cache_key] + x
                 elif (not 'k' in mdef) or mdef['k'] == k:
                     x = module(x)
         return x
@@ -288,8 +292,12 @@ class Darknet(nn.Module):
         # if k > 1 and k=k key exists on this layer then we must store shortcut layers in the cache
         # if no k key, compute this layer
         if k == 1 and 'k' in mdef and mdef['k'] == k:
+            #print("k", k, "mdef", mdef, "x shape", x.shape)
             x = module(x, out)
+            if cache_key >= 256:
+                intermediate_cache[cache_key] = x
         if k > 1 and 'k' in mdef and mdef['k'] == k:
+            #print("k", k, "mdef", mdef, "x shape", x.shape)
             x = module(x, out)
             intermediate_cache[cache_key] = x
         if not 'k' in mdef:
@@ -305,18 +313,18 @@ class Darknet(nn.Module):
 
         cuda_sync = False
 
-        if x.shape != self.last_size:
+        if self.opt.measure_runtime and x.shape != self.last_size:
             cuda_sync = True
             self.last_size = x.shape
 
         intermediate_cache = {}
         max_filters = 32
         for k in range(1, K_MAX + 1):
-            if cuda_sync and self.opt.measure_runtime:
+            if self.opt.measure_runtime and cuda_sync:
                 torch.cuda.synchronize()
                 start = time.time()
             for i, (mdef, module) in enumerate(zip(self.module_defs, self.module_list)):
-                #print("k", k, "mdef", mdef)
+                #print("k", k, "mdef", mdef, "x shape", x.shape)
                 mtype = mdef['type']
                 if mtype in ['convolutional', 'upsample', 'maxpool']:
                     if mtype == 'convolutional':
@@ -348,11 +356,12 @@ class Darknet(nn.Module):
                     str = ''
             # reset X to first cached layer here
             min_cache_key = min(intermediate_cache.keys())
+            #print(intermediate_cache.keys())
             x = intermediate_cache[min_cache_key]
             max_filters = 32
-            if cuda_sync and self.opt.measure_runtime:
+            if self.opt.measure_runtime and cuda_sync:
                 torch.cuda.synchronize()
-                print("Time taken for block K (ms)", k, ":", (time.time() - start) * 1000, "batch shape", self.last_size)
+                print("Time (ms) taken for block K =", k, ":", (time.time() - start) * 1000, "batch shape", self.last_size)
 
         if self.training:  # train
             return yolo_out
@@ -360,6 +369,8 @@ class Darknet(nn.Module):
             x = [torch.cat(x, 0) for x in zip(*yolo_out)]
             return x[0], torch.cat(x[1:3], 1)  # scores, boxes: 3780x80, 3780x4
         else:  # test
+            # only test with K=K_MAX outputs
+            yolo_out = yolo_out[(K_MAX - 1) * 3 : (K_MAX) * 3]
             io, p = zip(*yolo_out)  # inference output, training output
             return torch.cat(io, 1), p
 

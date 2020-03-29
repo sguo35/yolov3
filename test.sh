@@ -1,0 +1,1 @@
+python test.py --weights weights/best.pt --cfg yolov3-spp.cfg --batch-size 1 --task benchmark > benchmark_output.txt

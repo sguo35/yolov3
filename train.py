@@ -28,7 +28,7 @@ hyp = {'giou': 3.54,  # giou loss gain
        'obj': 64.3,  # obj loss gain (*=img_size/320 if img_size != 320)
        'obj_pw': 1.0,  # obj BCELoss positive_weight
        'iou_t': 0.225,  # iou training threshold
-       'lr0': 0.01,  # initial learning rate (SGD=5E-3, Adam=5E-4)
+       'lr0': 1e-3,  # initial learning rate (SGD=5E-3, Adam=5E-4)
        'lrf': -4.,  # final LambdaLR learning rate = lr0 * (10 ** lrf)
        'momentum': 0.937,  # SGD momentum
        'weight_decay': 0.000484,  # optimizer weight decay
@@ -78,6 +78,7 @@ def train():
 
     # Initialize model
     model = Darknet(cfg, opt).to(device)
+
 
     # Optimizer
     pg0, pg1, pg2 = [], [], []  # optimizer parameter groups
@@ -253,7 +254,7 @@ def train():
                 #         x['momentum'] = hyp['momentum'] * g
 
             # Plot images with bounding boxes
-            if ni < 1:
+            if i < 1:
                 f = 'train_batch%g.png' % i  # filename
                 plot_images(imgs=imgs, targets=targets, paths=paths, fname=f)
                 if tb_writer:
@@ -273,7 +274,12 @@ def train():
 
             # Compute loss
             loss, loss_items = compute_loss(pred, targets, model)
+            #if i > 200:
+            #    print("[LOSS]", loss, "[LOSS ITEMS]", loss_items)
             if not torch.isfinite(loss):
+                #print("[PRED]", pred)
+                #print("[TARGETS]", targets)
+                #print("[IMGS]", imgs)
                 print('WARNING: non-finite loss, ending training ', loss_items)
                 return results
 
@@ -309,13 +315,12 @@ def train():
         # Save training results
         save = (not opt.nosave) or (final_epoch and not opt.evolve)
         if save:
-            with open(results_file, 'r') as f:
-                # Create checkpoint
-                chkpt = {'epoch': epoch,
-                         'best_fitness': best_fitness,
-                         'training_results': f.read(),
-                         'model': model.module.state_dict() if hasattr(model, 'module') else model.state_dict(),
-                         'optimizer': None if final_epoch else optimizer.state_dict()}
+            # Create checkpoint
+            chkpt = {'epoch': epoch,
+                        'best_fitness': best_fitness,
+                        'training_results': None,
+                        'model': model.module.state_dict() if hasattr(model, 'module') else model.state_dict(),
+                        'optimizer': None if final_epoch else optimizer.state_dict()}
 
             # Save last checkpoint
             torch.save(chkpt, last)
@@ -425,11 +430,14 @@ if __name__ == '__main__':
     parser.add_argument('--single-cls', action='store_true', help='train as single-class dataset')
     parser.add_argument('--var', type=float, help='debug variable')
     parser.add_argument('--measure-runtime', action='store_true', help='measure runtime of 4 stages at different resolutions')
+    parser.add_argument('--full-precision', action='store_true', help='whether to use full FP32 precision in training')
     opt = parser.parse_args()
     opt.weights = last if opt.resume else opt.weights
     print(opt)
     device = torch_utils.select_device(opt.device, apex=mixed_precision, batch_size=opt.batch_size)
     if device.type == 'cpu':
+        mixed_precision = False
+    if opt.full_precision:
         mixed_precision = False
 
     # scale hyp['obj'] by img_size (evolved at 320)

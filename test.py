@@ -18,11 +18,12 @@ def test(cfg,
          save_json=False,
          single_cls=False,
          model=None,
-         dataloader=None):
+         dataloader=None,
+         k=4):
     # Initialize/load model and set device
     if model is None:
         device = torch_utils.select_device(opt.device, batch_size=batch_size)
-        verbose = opt.task == 'test'
+        verbose = True#opt.task == 'test'
 
         # Remove previous
         for f in glob.glob('test_batch*.png'):
@@ -96,7 +97,7 @@ def test(cfg,
 
             # Run model
             t = torch_utils.time_synchronized()
-            inf_out, train_out = model(imgs)  # inference and training outputs
+            inf_out, train_out = model(imgs, K_MAX=k)  # inference and training outputs
             t0 += torch_utils.time_synchronized() - t
 
             if aug:
@@ -200,8 +201,8 @@ def test(cfg,
 
     # Print speeds
     if verbose:
-        t = tuple(x / seen * 1E3 for x in (t0, t1, t0 + t1)) + (img_size, img_size, batch_size)  # tuple
-        print('Speed: %.1f/%.1f/%.1f ms inference/NMS/total per %gx%g image at batch-size %g' % t)
+        t = tuple(x / seen * 1E3 for x in (t0, t1, t0 + t1)) + (img_size, img_size, batch_size) + (k, )  # tuple
+        print('Speed: %.1f/%.1f/%.1f ms inference/NMS/total per %gx%g image at batch-size %g at block K=%g' % t)
 
     # Save JSON
     if save_json and map and len(jdict):
@@ -247,6 +248,7 @@ if __name__ == '__main__':
     parser.add_argument('--task', default='test', help="'test', 'study', 'benchmark'")
     parser.add_argument('--device', default='', help='device id (i.e. 0 or 0,1) or cpu')
     parser.add_argument('--single-cls', action='store_true', help='train as single-class dataset')
+    parser.add_argument('--measure_runtime', action='store_true', help='whether to measure forward runtime per K block')
     opt = parser.parse_args()
     opt.save_json = opt.save_json or any([x in opt.data for x in ['coco.data', 'coco2014.data', 'coco2017.data']])
     print(opt)
@@ -266,10 +268,11 @@ if __name__ == '__main__':
     elif opt.task == 'benchmark':  # mAPs at 320-608 at conf 0.5 and 0.7
         y = []
         for i in [320, 416, 512, 608]:  # img-size
-            for j in [0.5, 0.7]:  # iou-thres
-                t = time.time()
-                r = test(opt.cfg, opt.data, opt.weights, opt.batch_size, i, opt.conf_thres, j, opt.save_json)[0]
-                y.append(r + (time.time() - t,))
+            for j in [0.6]:  # iou-thres
+                for k in range(1, 5):
+                    t = time.time()
+                    r = test(opt.cfg, opt.data, opt.weights, opt.batch_size, i, opt.conf_thres, j, opt.save_json, k=k)[0]
+                    y.append(r + (time.time() - t,) + (k, ))
         np.savetxt('benchmark.txt', y, fmt='%10.4g')  # y = np.loadtxt('study.txt')
 
     elif opt.task == 'study':  # Parameter study
